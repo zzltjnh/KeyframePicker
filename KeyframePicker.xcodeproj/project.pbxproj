@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		517AD4691DD4855F0034A89D /* KeyframePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 517AD4671DD4855F0034A89D /* KeyframePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		517AD4901DD487FE0034A89D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 517AD48E1DD487FE0034A89D /* Info.plist */; };
+		517AD4911DD487FE0034A89D /* KeyframePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 517AD48F1DD487FE0034A89D /* KeyframePicker.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		517AD4641DD4855F0034A89D /* KeyframePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeyframePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		517AD4671DD4855F0034A89D /* KeyframePicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyframePicker.h; sourceTree = "<group>"; };
-		517AD4681DD4855F0034A89D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		517AD48E1DD487FE0034A89D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		517AD48F1DD487FE0034A89D /* KeyframePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyframePicker.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,7 +31,7 @@
 		517AD45A1DD4855F0034A89D = {
 			isa = PBXGroup;
 			children = (
-				517AD4661DD4855F0034A89D /* KeyframePicker */,
+				517AD48D1DD487FE0034A89D /* Source */,
 				517AD4651DD4855F0034A89D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,13 +44,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		517AD4661DD4855F0034A89D /* KeyframePicker */ = {
+		517AD48D1DD487FE0034A89D /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				517AD4671DD4855F0034A89D /* KeyframePicker.h */,
-				517AD4681DD4855F0034A89D /* Info.plist */,
+				517AD48E1DD487FE0034A89D /* Info.plist */,
+				517AD48F1DD487FE0034A89D /* KeyframePicker.h */,
 			);
-			path = KeyframePicker;
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -59,7 +60,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				517AD4691DD4855F0034A89D /* KeyframePicker.h in Headers */,
+				517AD4911DD487FE0034A89D /* KeyframePicker.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +123,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				517AD4901DD487FE0034A89D /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,7 +248,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = KeyframePicker/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -266,7 +268,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = KeyframePicker/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -296,6 +298,7 @@
 				517AD46E1DD4855F0034A89D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
