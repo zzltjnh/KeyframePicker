@@ -14,6 +14,16 @@
 		517AD4861DD4857E0034A89D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 517AD4841DD4857E0034A89D /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		517AD4A41DD5AC130034A89D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 517AD4A01DD5AC130034A89D /* KeyframePicker.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 517AD4641DD4855F0034A89D;
+			remoteInfo = KeyframePicker;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		517AD4781DD4857E0034A89D /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		517AD47B1DD4857E0034A89D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -22,6 +32,7 @@
 		517AD4821DD4857E0034A89D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		517AD4851DD4857E0034A89D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		517AD4871DD4857E0034A89D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		517AD4A01DD5AC130034A89D /* KeyframePicker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KeyframePicker.xcodeproj; path = ../KeyframePicker.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +51,7 @@
 			children = (
 				517AD47A1DD4857E0034A89D /* Example */,
 				517AD4791DD4857E0034A89D /* Products */,
+				517AD4A01DD5AC130034A89D /* KeyframePicker.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +74,14 @@
 				517AD4871DD4857E0034A89D /* Info.plist */,
 			);
 			path = Example;
+			sourceTree = "<group>";
+		};
+		517AD4A11DD5AC130034A89D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				517AD4A51DD5AC130034A89D /* KeyframePicker.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -112,12 +132,28 @@
 			mainGroup = 517AD46F1DD4857E0034A89D;
 			productRefGroup = 517AD4791DD4857E0034A89D /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 517AD4A11DD5AC130034A89D /* Products */;
+					ProjectRef = 517AD4A01DD5AC130034A89D /* KeyframePicker.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				517AD4771DD4857E0034A89D /* Example */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		517AD4A51DD5AC130034A89D /* KeyframePicker.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = KeyframePicker.framework;
+			remoteRef = 517AD4A41DD5AC130034A89D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		517AD4761DD4857E0034A89D /* Resources */ = {
@@ -304,6 +340,7 @@
 				517AD48C1DD4857E0034A89D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
