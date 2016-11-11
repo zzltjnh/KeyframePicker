@@ -8,13 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		517AD4901DD487FE0034A89D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 517AD48E1DD487FE0034A89D /* Info.plist */; };
-		517AD4911DD487FE0034A89D /* KeyframePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 517AD48F1DD487FE0034A89D /* KeyframePicker.h */; };
+		517AD4911DD487FE0034A89D /* KeyframePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 517AD48F1DD487FE0034A89D /* KeyframePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		517AD49A1DD59A860034A89D /* KeyframeImageGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517AD4991DD59A860034A89D /* KeyframeImageGenerator.swift */; };
+		517AD49D1DD59B210034A89D /* KeyframePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517AD49B1DD59B210034A89D /* KeyframePickerViewController.swift */; };
+		517AD49E1DD59B210034A89D /* KeyframePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 517AD49C1DD59B210034A89D /* KeyframePickerViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		517AD4641DD4855F0034A89D /* KeyframePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeyframePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		517AD48E1DD487FE0034A89D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		517AD48F1DD487FE0034A89D /* KeyframePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyframePicker.h; sourceTree = "<group>"; };
+		517AD4991DD59A860034A89D /* KeyframeImageGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyframeImageGenerator.swift; sourceTree = "<group>"; };
+		517AD49B1DD59B210034A89D /* KeyframePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyframePickerViewController.swift; sourceTree = "<group>"; };
+		517AD49C1DD59B210034A89D /* KeyframePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyframePickerViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +55,9 @@
 			children = (
 				517AD48E1DD487FE0034A89D /* Info.plist */,
 				517AD48F1DD487FE0034A89D /* KeyframePicker.h */,
+				517AD49B1DD59B210034A89D /* KeyframePickerViewController.swift */,
+				517AD49C1DD59B210034A89D /* KeyframePickerViewController.xib */,
+				517AD4991DD59A860034A89D /* KeyframeImageGenerator.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -97,6 +106,7 @@
 					517AD4631DD4855F0034A89D = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 2E728EA35C;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -123,6 +133,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				517AD49E1DD59B210034A89D /* KeyframePickerViewController.xib in Resources */,
 				517AD4901DD487FE0034A89D /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -134,6 +145,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				517AD49D1DD59B210034A89D /* KeyframePickerViewController.swift in Sources */,
+				517AD49A1DD59A860034A89D /* KeyframeImageGenerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +255,7 @@
 		517AD46D1DD4855F0034A89D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2E728EA35C;
@@ -255,6 +269,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.breadtrip.KeyframePicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -262,6 +277,7 @@
 		517AD46E1DD4855F0034A89D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2E728EA35C;
