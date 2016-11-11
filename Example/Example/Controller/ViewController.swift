@@ -22,6 +22,7 @@ class ViewController: UIViewController {
 
     //MARK: - Actions
     @IBAction func onPhotoLiarary(_ sender: AnyObject) {
+        
     }
     
     @IBAction func onLocalVideo(_ sender: AnyObject) {

@@ -8,10 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		517AD47C1DD4857E0034A89D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517AD47B1DD4857E0034A89D /* AppDelegate.swift */; };
-		517AD47E1DD4857E0034A89D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517AD47D1DD4857E0034A89D /* ViewController.swift */; };
 		517AD4811DD4857E0034A89D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 517AD47F1DD4857E0034A89D /* Main.storyboard */; };
-		517AD4831DD4857E0034A89D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 517AD4821DD4857E0034A89D /* Assets.xcassets */; };
 		517AD4861DD4857E0034A89D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 517AD4841DD4857E0034A89D /* LaunchScreen.storyboard */; };
+		517AD4BA1DD5C3C10034A89D /* LocalVideosPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517AD4B31DD5C3C10034A89D /* LocalVideosPickerViewController.swift */; };
+		517AD4BB1DD5C3C10034A89D /* PhotoLibraryVideosPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517AD4B41DD5C3C10034A89D /* PhotoLibraryVideosPickerViewController.swift */; };
+		517AD4BC1DD5C3C10034A89D /* RemoteVideosPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517AD4B51DD5C3C10034A89D /* RemoteVideosPickerViewController.swift */; };
+		517AD4BD1DD5C3C10034A89D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517AD4B61DD5C3C10034A89D /* ViewController.swift */; };
+		517AD4C01DD5C3F90034A89D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 517AD4BE1DD5C3F90034A89D /* Assets.xcassets */; };
+		517AD4C11DD5C3F90034A89D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 517AD4BF1DD5C3F90034A89D /* Info.plist */; };
+		517AD4C31DD5C4320034A89D /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517AD4C21DD5C4320034A89D /* Models.swift */; };
+		51888D141DD5CE6800AF1744 /* PhotoLibraryPickerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51888D131DD5CE6800AF1744 /* PhotoLibraryPickerViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,12 +33,17 @@
 /* Begin PBXFileReference section */
 		517AD4781DD4857E0034A89D /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		517AD47B1DD4857E0034A89D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		517AD47D1DD4857E0034A89D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		517AD4801DD4857E0034A89D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		517AD4821DD4857E0034A89D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		517AD4851DD4857E0034A89D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		517AD4871DD4857E0034A89D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		517AD4A01DD5AC130034A89D /* KeyframePicker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KeyframePicker.xcodeproj; path = ../KeyframePicker.xcodeproj; sourceTree = "<group>"; };
+		517AD4B31DD5C3C10034A89D /* LocalVideosPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalVideosPickerViewController.swift; sourceTree = "<group>"; };
+		517AD4B41DD5C3C10034A89D /* PhotoLibraryVideosPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryVideosPickerViewController.swift; sourceTree = "<group>"; };
+		517AD4B51DD5C3C10034A89D /* RemoteVideosPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteVideosPickerViewController.swift; sourceTree = "<group>"; };
+		517AD4B61DD5C3C10034A89D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		517AD4BE1DD5C3F90034A89D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		517AD4BF1DD5C3F90034A89D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		517AD4C21DD5C4320034A89D /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		51888D131DD5CE6800AF1744 /* PhotoLibraryPickerViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryPickerViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,12 +77,13 @@
 		517AD47A1DD4857E0034A89D /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				517AD4B21DD5C3C10034A89D /* Controller */,
+				517AD4B71DD5C3C10034A89D /* Model */,
+				517AD4B81DD5C3C10034A89D /* Resource */,
+				517AD4B91DD5C3C10034A89D /* View */,
 				517AD47B1DD4857E0034A89D /* AppDelegate.swift */,
-				517AD47D1DD4857E0034A89D /* ViewController.swift */,
 				517AD47F1DD4857E0034A89D /* Main.storyboard */,
-				517AD4821DD4857E0034A89D /* Assets.xcassets */,
 				517AD4841DD4857E0034A89D /* LaunchScreen.storyboard */,
-				517AD4871DD4857E0034A89D /* Info.plist */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -82,6 +94,42 @@
 				517AD4A51DD5AC130034A89D /* KeyframePicker.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		517AD4B21DD5C3C10034A89D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				517AD4B61DD5C3C10034A89D /* ViewController.swift */,
+				517AD4B41DD5C3C10034A89D /* PhotoLibraryVideosPickerViewController.swift */,
+				517AD4B31DD5C3C10034A89D /* LocalVideosPickerViewController.swift */,
+				517AD4B51DD5C3C10034A89D /* RemoteVideosPickerViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		517AD4B71DD5C3C10034A89D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				517AD4C21DD5C4320034A89D /* Models.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		517AD4B81DD5C3C10034A89D /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				517AD4BE1DD5C3F90034A89D /* Assets.xcassets */,
+				517AD4BF1DD5C3F90034A89D /* Info.plist */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		517AD4B91DD5C3C10034A89D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				51888D131DD5CE6800AF1744 /* PhotoLibraryPickerViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,8 +208,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				517AD4C11DD5C3F90034A89D /* Info.plist in Resources */,
 				517AD4861DD4857E0034A89D /* LaunchScreen.storyboard in Resources */,
-				517AD4831DD4857E0034A89D /* Assets.xcassets in Resources */,
+				517AD4C01DD5C3F90034A89D /* Assets.xcassets in Resources */,
 				517AD4811DD4857E0034A89D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -173,8 +222,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				517AD47E1DD4857E0034A89D /* ViewController.swift in Sources */,
+				517AD4BD1DD5C3C10034A89D /* ViewController.swift in Sources */,
+				517AD4BC1DD5C3C10034A89D /* RemoteVideosPickerViewController.swift in Sources */,
+				517AD4BA1DD5C3C10034A89D /* LocalVideosPickerViewController.swift in Sources */,
+				517AD4C31DD5C4320034A89D /* Models.swift in Sources */,
 				517AD47C1DD4857E0034A89D /* AppDelegate.swift in Sources */,
+				51888D141DD5CE6800AF1744 /* PhotoLibraryPickerViewCell.swift in Sources */,
+				517AD4BB1DD5C3C10034A89D /* PhotoLibraryVideosPickerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,7 +350,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2E728EA35C;
-				INFOPLIST_FILE = Example/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Example/Resource/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.breadtrip.Example;
@@ -311,7 +365,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2E728EA35C;
-				INFOPLIST_FILE = Example/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Example/Resource/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.breadtrip.Example;
