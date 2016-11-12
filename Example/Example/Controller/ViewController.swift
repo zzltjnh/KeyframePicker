@@ -19,17 +19,6 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    //MARK: - Actions
-    @IBAction func onPhotoLiarary(_ sender: AnyObject) {
-        
-    }
-    
-    @IBAction func onLocalVideo(_ sender: AnyObject) {
-    }
-
-    @IBAction func onRemoteVideo(_ sender: AnyObject) {
-    }
 }
 
 

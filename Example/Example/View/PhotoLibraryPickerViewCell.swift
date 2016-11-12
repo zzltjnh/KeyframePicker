@@ -15,20 +15,17 @@ class PhotoLibraryPickerViewCell: UICollectionViewCell {
     
     var videoModel: VideoModel?
     
-    func configUI() {
-        
-    }
-    
     func updateUI() {
         guard let asset = videoModel?.asset else {
             return
         }
+        //获取视频缩略图
         let screenSize = UIScreen.main.bounds.size
         let thumbnailsSize = CGSize(width:screenSize.width / 4 * UIScreen.main.scale, height:screenSize.width / 4 * UIScreen.main.scale)
         let options = PHImageRequestOptions()
         options.deliveryMode = .fastFormat
-        PHImageManager.default().requestImage(for: asset, targetSize: thumbnailsSize, contentMode: .aspectFill, options: options, resultHandler: { (image, info) in
-            self.imageView.image = image
+        PHImageManager.default().requestImage(for: asset, targetSize: thumbnailsSize, contentMode: .aspectFill, options: options, resultHandler: { [weak self] (image, info) in
+            self?.imageView.image = image
         })
 
     }

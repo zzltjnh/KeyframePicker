@@ -8,6 +8,7 @@
 
 import UIKit
 import Photos
+import KeyframePicker
 
 class PhotoLibraryVideosPickerViewController: UIViewController {
 
@@ -23,11 +24,12 @@ class PhotoLibraryVideosPickerViewController: UIViewController {
     }
     
     func loadData() {
+        // 读取系统相册中的视频
         let fetchResult = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumVideos, options: nil)
         
-        fetchResult.enumerateObjects ({ (assetCollection, idx, stop) in
+        fetchResult.enumerateObjects ({ (assetCollection, _, _) in
             let videoAssets = PHAsset.fetchAssets(in: assetCollection, options: nil)
-            videoAssets.enumerateObjects ({ (asset, idx1, stop1) in
+            videoAssets.enumerateObjects ({ (asset, _, _) in
                 var videoModel = VideoModel()
                 videoModel.asset = asset
                 self.videoModels.append(videoModel)
@@ -55,13 +57,11 @@ class PhotoLibraryVideosPickerViewController: UIViewController {
 
 extension PhotoLibraryVideosPickerViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return videoModels.count
     }
     
@@ -73,5 +73,22 @@ extension PhotoLibraryVideosPickerViewController: UICollectionViewDataSource, UI
         cell.updateUI()
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let videoModel = videoModels[indexPath.row]
+        
+        guard let asset = videoModel.asset else {
+            return
+        }
+        
+        // Get AVAsset from PHAsset
+        PHImageManager.default().requestAVAsset(forVideo: asset, options: nil) { [weak self] (avAsset, _, _) in
+            let keyframePicker = KeyframePickerViewController()
+            keyframePicker.asset = avAsset
+            
+            self?.navigationController?.pushViewController(keyframePicker, animated: true)
+        }
+        
     }
 }

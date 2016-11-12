@@ -18,6 +18,7 @@
 		517AD4C11DD5C3F90034A89D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 517AD4BF1DD5C3F90034A89D /* Info.plist */; };
 		517AD4C31DD5C4320034A89D /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517AD4C21DD5C4320034A89D /* Models.swift */; };
 		51888D141DD5CE6800AF1744 /* PhotoLibraryPickerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51888D131DD5CE6800AF1744 /* PhotoLibraryPickerViewCell.swift */; };
+		51888D171DD7494800AF1744 /* KeyframePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517AD4A51DD5AC130034A89D /* KeyframePicker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51888D171DD7494800AF1744 /* KeyframePicker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
