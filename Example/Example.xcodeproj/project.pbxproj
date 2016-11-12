@@ -19,6 +19,8 @@
 		517AD4C31DD5C4320034A89D /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517AD4C21DD5C4320034A89D /* Models.swift */; };
 		51888D141DD5CE6800AF1744 /* PhotoLibraryPickerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51888D131DD5CE6800AF1744 /* PhotoLibraryPickerViewCell.swift */; };
 		51888D171DD7494800AF1744 /* KeyframePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517AD4A51DD5AC130034A89D /* KeyframePicker.framework */; };
+		51888D1B1DD7500E00AF1744 /* KeyframePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517AD4A51DD5AC130034A89D /* KeyframePicker.framework */; };
+		51888D1C1DD7500E00AF1744 /* KeyframePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 517AD4A51DD5AC130034A89D /* KeyframePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,7 +31,28 @@
 			remoteGlobalIDString = 517AD4641DD4855F0034A89D;
 			remoteInfo = KeyframePicker;
 		};
+		51888D1D1DD7500E00AF1744 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 517AD4A01DD5AC130034A89D /* KeyframePicker.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 517AD4631DD4855F0034A89D;
+			remoteInfo = KeyframePicker;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		51888D1F1DD7500E00AF1744 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				51888D1C1DD7500E00AF1744 /* KeyframePicker.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		517AD4781DD4857E0034A89D /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51888D1B1DD7500E00AF1744 /* KeyframePicker.framework in Frameworks */,
 				51888D171DD7494800AF1744 /* KeyframePicker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,10 +168,12 @@
 				517AD4741DD4857E0034A89D /* Sources */,
 				517AD4751DD4857E0034A89D /* Frameworks */,
 				517AD4761DD4857E0034A89D /* Resources */,
+				51888D1F1DD7500E00AF1744 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				51888D1E1DD7500E00AF1744 /* PBXTargetDependency */,
 			);
 			name = Example;
 			productName = Example;
@@ -235,6 +261,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		51888D1E1DD7500E00AF1744 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = KeyframePicker;
+			targetProxy = 51888D1D1DD7500E00AF1744 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		517AD47F1DD4857E0034A89D /* Main.storyboard */ = {
@@ -350,6 +384,7 @@
 		517AD48B1DD4857E0034A89D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2E728EA35C;
 				INFOPLIST_FILE = "$(SRCROOT)/Example/Resource/Info.plist";
@@ -365,6 +400,7 @@
 		517AD48C1DD4857E0034A89D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2E728EA35C;
 				INFOPLIST_FILE = "$(SRCROOT)/Example/Resource/Info.plist";
