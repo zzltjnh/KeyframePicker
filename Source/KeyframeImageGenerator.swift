@@ -41,7 +41,7 @@ open class KeyframeImageGenerator: NSObject {
     /// 生成某个时间点的单张图片
     ///
     /// - parameter asset:   AVAsset
-    /// - parameter time:    将要生成图片的时间，默认为0
+    /// - parameter time:    将要生成图片的时间，默认为0即取视频第一帧
     /// - parameter closure: 图片生成完成后会执行该闭包回调
     open func generateSingleImage(from asset: AVAsset, time: Float64 = 0, closure: @escaping SingleImageClosure) {
         let imageGenerator = AVAssetImageGenerator(asset: asset)

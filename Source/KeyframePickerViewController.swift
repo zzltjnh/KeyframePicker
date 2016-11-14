@@ -14,7 +14,7 @@ open class KeyframePickerViewController: UIViewController {
     //MARK: - Public Properties
     public var asset: AVAsset?
     public var videoPath: String?
-    public let imageGenerator: KeyframeImageGenerator = KeyframeImageGenerator()
+    public let imageGenerator = KeyframeImageGenerator()
     
     //MARK: - Private Properties
     @IBOutlet weak var collectionView: UICollectionView!
