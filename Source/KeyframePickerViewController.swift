@@ -38,7 +38,7 @@ open class KeyframePickerViewController: UIViewController {
         return nil
     }
     
-    var displayKeyframeImages: [KeyframeImage] = []
+    fileprivate var displayKeyframeImages: [KeyframeImage] = []
 
     //MARK: - Life Cycle
     open override func viewDidLoad() {
@@ -55,7 +55,7 @@ open class KeyframePickerViewController: UIViewController {
     }
     
     //MARK: - Load Data
-    func loadData() {
+    open func loadData() {
         if let _asset = _asset {
             imageGenerator.generateDefaultSequenceOfImages(from: _asset) { [weak self] in
                 self?.displayKeyframeImages.append(contentsOf: $0)
@@ -65,11 +65,11 @@ open class KeyframePickerViewController: UIViewController {
     }
     
     //MARK: - UI Related
-    func configUI() {
+    open func configUI() {
         
     }
     
-    func updateUI() {
+    open func updateUI() {
         collectionView.reloadData()
     }
     
