@@ -66,7 +66,8 @@ open class KeyframePickerViewController: UIViewController {
     
     //MARK: - UI Related
     open func configUI() {
-        
+        collectionView.alwaysBounceHorizontal = true
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: UIScreen.main.bounds.size.width / 2, bottom: 0, right: UIScreen.main.bounds.size.width / 2)
     }
     
     open func updateUI() {
