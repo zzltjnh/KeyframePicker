@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		517AD4901DD487FE0034A89D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 517AD48E1DD487FE0034A89D /* Info.plist */; };
 		517AD4911DD487FE0034A89D /* KeyframePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 517AD48F1DD487FE0034A89D /* KeyframePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		517AD49A1DD59A860034A89D /* KeyframeImageGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517AD4991DD59A860034A89D /* KeyframeImageGenerator.swift */; };
 		517AD49D1DD59B210034A89D /* KeyframePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517AD49B1DD59B210034A89D /* KeyframePickerViewController.swift */; };
-		517AD49E1DD59B210034A89D /* KeyframePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 517AD49C1DD59B210034A89D /* KeyframePickerViewController.xib */; };
+		51888D481DD9BC4D00AF1744 /* KeyframePicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51888D471DD9BC4D00AF1744 /* KeyframePicker.storyboard */; };
+		51888D4A1DD9BDE000AF1744 /* KeyframePickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51888D491DD9BDDF00AF1744 /* KeyframePickerCollectionViewCell.swift */; };
+		51888D4B1DD9C8A100AF1744 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 517AD48E1DD487FE0034A89D /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,7 +21,8 @@
 		517AD48F1DD487FE0034A89D /* KeyframePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyframePicker.h; sourceTree = "<group>"; };
 		517AD4991DD59A860034A89D /* KeyframeImageGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyframeImageGenerator.swift; sourceTree = "<group>"; };
 		517AD49B1DD59B210034A89D /* KeyframePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyframePickerViewController.swift; sourceTree = "<group>"; };
-		517AD49C1DD59B210034A89D /* KeyframePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyframePickerViewController.xib; sourceTree = "<group>"; };
+		51888D471DD9BC4D00AF1744 /* KeyframePicker.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = KeyframePicker.storyboard; sourceTree = "<group>"; };
+		51888D491DD9BDDF00AF1744 /* KeyframePickerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyframePickerCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,8 +58,9 @@
 				517AD48E1DD487FE0034A89D /* Info.plist */,
 				517AD48F1DD487FE0034A89D /* KeyframePicker.h */,
 				517AD49B1DD59B210034A89D /* KeyframePickerViewController.swift */,
-				517AD49C1DD59B210034A89D /* KeyframePickerViewController.xib */,
 				517AD4991DD59A860034A89D /* KeyframeImageGenerator.swift */,
+				51888D471DD9BC4D00AF1744 /* KeyframePicker.storyboard */,
+				51888D491DD9BDDF00AF1744 /* KeyframePickerCollectionViewCell.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -133,8 +136,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				517AD49E1DD59B210034A89D /* KeyframePickerViewController.xib in Resources */,
-				517AD4901DD487FE0034A89D /* Info.plist in Resources */,
+				51888D4B1DD9C8A100AF1744 /* Info.plist in Resources */,
+				51888D481DD9BC4D00AF1744 /* KeyframePicker.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51888D4A1DD9BDE000AF1744 /* KeyframePickerCollectionViewCell.swift in Sources */,
 				517AD49D1DD59B210034A89D /* KeyframePickerViewController.swift in Sources */,
 				517AD49A1DD59A860034A89D /* KeyframeImageGenerator.swift in Sources */,
 			);

@@ -11,13 +11,42 @@ import AVFoundation
 
 open class KeyframePickerViewController: UIViewController {
 
+    //MARK: - Public Properties
     public var asset: AVAsset?
     public var videoPath: String?
+    public let imageGenerator: KeyframeImageGenerator = KeyframeImageGenerator()
     
+    //MARK: - Private Properties
+    @IBOutlet weak var collectionView: UICollectionView!
+    private var _asset: AVAsset? {
+        if let asset = asset {
+            return asset
+        }
+        
+        if let videoPath = videoPath , videoPath.characters.count > 0 {
+            var videoURL = URL(string: videoPath)
+            if videoURL == nil || videoURL?.scheme == nil {
+                videoURL = URL(fileURLWithPath: videoPath)
+            }
+            
+            if let videoURL = videoURL {
+                let urlAsset = AVURLAsset(url: videoURL, options: nil)
+                return urlAsset
+            }
+        }
+        
+        return nil
+    }
+    
+    var displayKeyframeImages: [KeyframeImage] = []
+
+    //MARK: - Life Cycle
     open override func viewDidLoad() {
         super.viewDidLoad()
-
+    
         // Do any additional setup after loading the view.
+        loadData()
+        configUI()
     }
 
     open override func didReceiveMemoryWarning() {
@@ -25,15 +54,38 @@ open class KeyframePickerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    //MARK: - Load Data
+    func loadData() {
+        if let _asset = _asset {
+            imageGenerator.generateDefaultSequenceOfImages(from: _asset) { [weak self] in
+                self?.displayKeyframeImages.append(contentsOf: $0)
+                self?.updateUI()
+            }
+        }
     }
-    */
+    
+    //MARK: - UI Related
+    func configUI() {
+        
+    }
+    
+    func updateUI() {
+        collectionView.reloadData()
+    }
+    
+}
 
+//MARK: - UICollectionView Methods
+extension KeyframePickerViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return displayKeyframeImages.count
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: KeyframePickerCollectionViewCell.self), for: indexPath) as! KeyframePickerCollectionViewCell
+        cell.keyframeImage = displayKeyframeImages[indexPath.row]
+        cell.updateUI()
+        
+        return cell
+    }
 }

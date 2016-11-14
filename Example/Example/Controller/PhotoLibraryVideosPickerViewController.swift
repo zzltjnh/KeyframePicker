@@ -19,7 +19,7 @@ class PhotoLibraryVideosPickerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Photo Library"
+        title = "Select a Video"
         loadData()
     }
     
@@ -84,10 +84,15 @@ extension PhotoLibraryVideosPickerViewController: UICollectionViewDataSource, UI
         
         // Get AVAsset from PHAsset
         PHImageManager.default().requestAVAsset(forVideo: asset, options: nil) { [weak self] (avAsset, _, _) in
-            let keyframePicker = KeyframePickerViewController()
-            keyframePicker.asset = avAsset
-            
-            self?.navigationController?.pushViewController(keyframePicker, animated: true)
+            //该闭包是在非主线程回调，因此UI操作应放到主线程执行
+            DispatchQueue.main.async {
+                let storyBoard = UIStoryboard(name: "KeyframePicker", bundle: Bundle(for: KeyframePickerViewController.self))
+                let keyframePicker = storyBoard.instantiateViewController(withIdentifier: String(describing: KeyframePickerViewController.self)) as! KeyframePickerViewController
+                
+                keyframePicker.asset = avAsset
+                
+                self?.navigationController?.pushViewController(keyframePicker, animated: true)
+            }
         }
         
     }

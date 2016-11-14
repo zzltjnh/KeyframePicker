@@ -180,9 +180,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GQS-Fz-mWO">
-                                                    <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.29342195970000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GQS-Fz-mWO"/>
                                             </subviews>
                                         </view>
                                         <constraints>
