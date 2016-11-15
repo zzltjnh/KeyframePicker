@@ -10,11 +10,14 @@ import UIKit
 import AVFoundation
 
 public typealias KeyframePickerVideoPlayerProgressHandler = (CMTime) -> Void
+public typealias KeyframePickerVideoPlayerStatusHandler = () -> Void
 
 open class KeyframePickerVideoPlayerController: UIViewController {
     //MARK: - Public Properties
     public var asset: AVAsset?
     public var progressHandler: KeyframePickerVideoPlayerProgressHandler?
+    public var didPlayToEndTimeHandler: KeyframePickerVideoPlayerStatusHandler?
+    public var failedToPlayToEndTimeHandler: KeyframePickerVideoPlayerStatusHandler?
     
     //MARK: - Private Properties
     private lazy var _videoView: KeyframePickerVideoPlayerView = {
@@ -42,9 +45,12 @@ open class KeyframePickerVideoPlayerController: UIViewController {
     
     //MARK: - Life Cycle
     deinit {
+        // Remove Observers
         if let _timeObserver = _timeObserver {
             _player.removeTimeObserver(_timeObserver)
         }
+        
+        NotificationCenter.default.removeObserver(self)
     }
     
     override open func loadView() {
@@ -56,6 +62,7 @@ open class KeyframePickerVideoPlayerController: UIViewController {
 
         // Do any additional setup after loading the view.
         configTimeObserver()
+        configNotifications()
     }
 
     override open func didReceiveMemoryWarning() {
@@ -64,7 +71,12 @@ open class KeyframePickerVideoPlayerController: UIViewController {
     }
     
     //MARK: - Player Actions
-    public func play() {
+    public func playFromBeginning() {
+        seek(to: kCMTimeZero)
+        playFromCurrentTime()
+    }
+    
+    public func playFromCurrentTime() {
         _player.play()
     }
     
@@ -85,6 +97,21 @@ open class KeyframePickerVideoPlayerController: UIViewController {
                                                             queue: DispatchQueue.main,
                                                             using: progressHandler)
         }
+    }
+    
+    private func configNotifications() {
+        //添加播放完成和播放失败通知
+        NotificationCenter.default.addObserver(self, selector: #selector(didPlayToEndTime), name: Notification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(failedToPlayToEndTime), name: Notification.Name.AVPlayerItemFailedToPlayToEndTime, object: nil)
+    }
+    
+    //MARK: - Notification Methods
+    @objc private func didPlayToEndTime() {
+        didPlayToEndTimeHandler?()
+    }
+    
+    @objc private func failedToPlayToEndTime() {
+        failedToPlayToEndTimeHandler?()
     }
 }
 
