@@ -9,7 +9,7 @@
         <!--Keyframe Picker View Controller-->
         <scene sceneID="yb7-CW-xEy">
             <objects>
-                <viewController storyboardIdentifier="KeyframePickerViewController" id="eaV-a8-Sv7" customClass="KeyframePickerViewController" customModule="KeyframePicker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="KeyframePickerViewController" automaticallyAdjustsScrollViewInsets="NO" id="eaV-a8-Sv7" customClass="KeyframePickerViewController" customModule="KeyframePicker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="USg-s1-hvJ"/>
                         <viewControllerLayoutGuide type="bottom" id="RAE-eD-EoN"/>
@@ -21,20 +21,20 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DfW-x1-MVE">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="fbJ-R9-Dfc"/>
+                                    <constraint firstAttribute="height" constant="80" id="fbJ-R9-Dfc"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Lts-59-tv7">
-                                    <size key="itemSize" width="95" height="100"/>
+                                    <size key="itemSize" width="95" height="80"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="KeyframePickerCollectionViewCell" id="dkS-cx-Azc" customClass="KeyframePickerCollectionViewCell" customModule="KeyframePicker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="95" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="95" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="95" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="95" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zcJ-Np-dnh"/>
@@ -56,21 +56,95 @@
                                     <outlet property="delegate" destination="eaV-a8-Sv7" id="vMi-jI-VVC"/>
                                 </connections>
                             </collectionView>
+                            <containerView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ek1-hH-iE2" userLabel="Cursor Container View">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="8By-Bd-10M"/>
+                                    <constraint firstAttribute="width" constant="120" id="tRX-qT-apw"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="jBO-pp-AOb" kind="embed" identifier="KeyframePickerCursorViewController" id="G4R-oY-EVz"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="DfW-x1-MVE" secondAttribute="trailing" id="4lh-A0-N2u"/>
                             <constraint firstItem="RAE-eD-EoN" firstAttribute="top" secondItem="DfW-x1-MVE" secondAttribute="bottom" id="AR5-Oz-QWF"/>
                             <constraint firstItem="DfW-x1-MVE" firstAttribute="leading" secondItem="Nen-VJ-hC7" secondAttribute="leading" id="MoB-9s-79W"/>
+                            <constraint firstItem="RAE-eD-EoN" firstAttribute="top" secondItem="Ek1-hH-iE2" secondAttribute="bottom" id="lvv-Uh-1fc"/>
+                            <constraint firstItem="Ek1-hH-iE2" firstAttribute="centerX" secondItem="Nen-VJ-hC7" secondAttribute="centerX" id="zxN-ui-WVD"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="DfW-x1-MVE" id="hoX-ph-uxv"/>
+                        <outlet property="cursorContainerView" destination="Ek1-hH-iE2" id="sy4-rb-X9v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWU-kM-9mf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-130.40000000000001" y="-10.344827586206897"/>
+        </scene>
+        <!--Keyframe Picker Cursor View Controller-->
+        <scene sceneID="t7g-77-gtH">
+            <objects>
+                <viewController storyboardIdentifier="KeyframePickerCursorViewController" id="jBO-pp-AOb" customClass="KeyframePickerCursorViewController" customModule="KeyframePicker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2L4-eA-atZ">
+                        <rect key="frame" x="0.0" y="0.0" width="120" height="100"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gl5-qw-nnS" userLabel="Cursor View">
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gts-wm-fck" userLabel="Line">
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="1" id="wEx-lO-ZFL"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="CCQ-7K-6nI"/>
+                                    <constraint firstItem="gts-wm-fck" firstAttribute="centerX" secondItem="Gl5-qw-nnS" secondAttribute="centerX" id="Jkl-Xa-22A"/>
+                                    <constraint firstAttribute="height" constant="80" id="Lg5-Hh-WID"/>
+                                    <constraint firstAttribute="bottom" secondItem="gts-wm-fck" secondAttribute="bottom" id="kqL-Bs-yjN"/>
+                                    <constraint firstItem="gts-wm-fck" firstAttribute="top" secondItem="Gl5-qw-nnS" secondAttribute="top" id="oUE-6L-IJz"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hI2-jy-PAv" userLabel="Time Container View">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zzg-1j-13L" userLabel="Time Label">
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.70207634228187921" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="zzg-1j-13L" firstAttribute="leading" secondItem="hI2-jy-PAv" secondAttribute="leading" constant="7" id="IQU-Sp-Xtk"/>
+                                    <constraint firstAttribute="bottom" secondItem="zzg-1j-13L" secondAttribute="bottom" id="Nan-Eg-dDx"/>
+                                    <constraint firstAttribute="height" constant="15" id="W3T-sH-6Cu"/>
+                                    <constraint firstAttribute="trailing" secondItem="zzg-1j-13L" secondAttribute="trailing" constant="7" id="nNt-uS-nNc"/>
+                                    <constraint firstItem="zzg-1j-13L" firstAttribute="centerX" secondItem="hI2-jy-PAv" secondAttribute="centerX" id="wwk-WZ-wU1"/>
+                                    <constraint firstItem="zzg-1j-13L" firstAttribute="top" secondItem="hI2-jy-PAv" secondAttribute="top" id="yP1-5K-ibM"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Gl5-qw-nnS" secondAttribute="bottom" id="0DT-iv-3Bv"/>
+                            <constraint firstItem="Gl5-qw-nnS" firstAttribute="top" secondItem="hI2-jy-PAv" secondAttribute="bottom" constant="5" id="KKB-QH-Bvw"/>
+                            <constraint firstItem="hI2-jy-PAv" firstAttribute="centerX" secondItem="2L4-eA-atZ" secondAttribute="centerX" id="VXH-uz-2RS"/>
+                            <constraint firstItem="Gl5-qw-nnS" firstAttribute="centerX" secondItem="2L4-eA-atZ" secondAttribute="centerX" id="rVv-cw-ibx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="timeContainerView" destination="hI2-jy-PAv" id="mx6-uk-S5U"/>
+                        <outlet property="timeLabel" destination="zzg-1j-13L" id="vsf-PQ-ZWp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Da-BX-Y26" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="604.79999999999995" y="384.10794602698655"/>
         </scene>
     </scenes>
 </document>

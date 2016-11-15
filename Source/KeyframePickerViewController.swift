@@ -13,11 +13,16 @@ open class KeyframePickerViewController: UIViewController {
 
     //MARK: - Public Properties
     public var asset: AVAsset?
+    ///视频路径（本地或远程）
     public var videoPath: String?
     public let imageGenerator = KeyframeImageGenerator()
     
     //MARK: - Private Properties
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var cursorContainerView: UIView!
+    
+    weak var cursorContainerViewController: KeyframePickerCursorViewController!
+    
     private var _asset: AVAsset? {
         if let asset = asset {
             return asset
@@ -66,12 +71,22 @@ open class KeyframePickerViewController: UIViewController {
     
     //MARK: - UI Related
     open func configUI() {
+        //即使内容很少也允许collectionView有弹性效果
         collectionView.alwaysBounceHorizontal = true
+        //左右留白（屏幕一半宽），目的是让collectionView中的第一个和最后一个cell能滚动到屏幕中央
         collectionView.contentInset = UIEdgeInsets(top: 0, left: UIScreen.main.bounds.size.width / 2, bottom: 0, right: UIScreen.main.bounds.size.width / 2)
+        
+        cursorContainerViewController.seconds = 0
     }
     
     open func updateUI() {
         collectionView.reloadData()
+    }
+    
+    open override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == String(describing: KeyframePickerCursorViewController.self) {
+            self.cursorContainerViewController = segue.destination as! KeyframePickerCursorViewController
+        }
     }
     
 }
