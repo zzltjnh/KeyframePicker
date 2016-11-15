@@ -71,11 +71,14 @@ open class KeyframePickerVideoPlayerController: UIViewController {
     }
     
     //MARK: - Player Actions
+    
+    /// 从头开始播放
     public func playFromBeginning() {
         seek(to: kCMTimeZero)
         playFromCurrentTime()
     }
     
+    /// 从当前进度开始播放
     public func playFromCurrentTime() {
         _player.play()
     }
@@ -84,6 +87,9 @@ open class KeyframePickerVideoPlayerController: UIViewController {
         _player.pause()
     }
     
+    /// 将视频画面定格到某一帧
+    ///
+    /// - parameter time: 想要定格的时间
     public func seek(to time: CMTime) {
         _player.seek(to: time, toleranceBefore: CMTimeMake(0, _timeScale), toleranceAfter: CMTimeMake(0, _timeScale)) {_ in
             
@@ -91,6 +97,8 @@ open class KeyframePickerVideoPlayerController: UIViewController {
     }
     
     //MARK: - Private Methods
+    
+    /// 观察播放进度
     private func configTimeObserver() {
         if let progressHandler = progressHandler {
             _timeObserver = _player.addPeriodicTimeObserver(forInterval: CMTimeMake(1, _timeScale),
@@ -99,6 +107,7 @@ open class KeyframePickerVideoPlayerController: UIViewController {
         }
     }
     
+    /// 添加播放相关通知
     private func configNotifications() {
         //添加播放完成和播放失败通知
         NotificationCenter.default.addObserver(self, selector: #selector(didPlayToEndTime), name: Notification.Name.AVPlayerItemDidPlayToEndTime, object: nil)

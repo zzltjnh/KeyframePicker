@@ -103,7 +103,7 @@ open class KeyframePickerViewController: UIViewController {
 }
 
 //MARK: - UICollectionView Methods
-extension KeyframePickerViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension KeyframePickerViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return displayKeyframeImages.count
     }
@@ -114,5 +114,9 @@ extension KeyframePickerViewController: UICollectionViewDataSource, UICollection
         cell.updateUI()
         
         return cell
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 67, height: collectionView.frame.size.height)
     }
 }
