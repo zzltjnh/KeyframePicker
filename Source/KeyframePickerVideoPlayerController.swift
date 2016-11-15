@@ -42,13 +42,26 @@ class KeyframePickerVideoPlayerController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        self._player.play()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //MARK: - Player Actions
+    public func play() {
+        _player.play()
+    }
+    
+    public func pause() {
+        _player.pause()
+    }
+    
+    public func seek(to time: CMTime) {
+        _player.seek(to: time, toleranceBefore: CMTimeMake(0, 600), toleranceAfter: CMTimeMake(0, 600)) {_ in 
+            
+        }
     }
 }
 
@@ -92,10 +105,16 @@ class KeyframePickerVideoPlayerView: UIView {
         }
     }
     
+    public var playerLayerBackgroundColor = UIColor.white.cgColor {
+        didSet {
+            self.playerLayer.backgroundColor = UIColor.white.cgColor
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        self.playerLayer.backgroundColor = UIColor.black.cgColor
+        self.playerLayer.backgroundColor = playerLayerBackgroundColor
     }
     
     required init?(coder aDecoder: NSCoder) {
