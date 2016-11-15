@@ -9,9 +9,14 @@
 import UIKit
 import AVFoundation
 
-class KeyframePickerVideoPlayerController: UIViewController {
+public typealias KeyframePickerVideoPlayerProgressHandler = (CMTime) -> Void
+
+open class KeyframePickerVideoPlayerController: UIViewController {
+    //MARK: - Public Properties
     public var asset: AVAsset?
+    public var progressHandler: KeyframePickerVideoPlayerProgressHandler?
     
+    //MARK: - Private Properties
     private lazy var _videoView: KeyframePickerVideoPlayerView = {
        let videoView = KeyframePickerVideoPlayerView(frame: CGRect.zero)
         videoView.videoFillMode = .resizeAspect
@@ -30,21 +35,30 @@ class KeyframePickerVideoPlayerController: UIViewController {
         return nil
     }()
     
+    private var _timeObserver: Any?
+    private var _timeScale: CMTimeScale {
+        return asset?.duration.timescale ?? 600
+    }
+    
     //MARK: - Life Cycle
-    override func loadView() {
+    deinit {
+        if let _timeObserver = _timeObserver {
+            _player.removeTimeObserver(_timeObserver)
+        }
+    }
+    
+    override open func loadView() {
         self.view = _videoView
     }
-    override func viewDidLoad() {
+    
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        configTimeObserver()
     }
 
-    override func didReceiveMemoryWarning() {
+    override open func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -59,8 +73,17 @@ class KeyframePickerVideoPlayerController: UIViewController {
     }
     
     public func seek(to time: CMTime) {
-        _player.seek(to: time, toleranceBefore: CMTimeMake(0, 600), toleranceAfter: CMTimeMake(0, 600)) {_ in 
+        _player.seek(to: time, toleranceBefore: CMTimeMake(0, _timeScale), toleranceAfter: CMTimeMake(0, _timeScale)) {_ in
             
+        }
+    }
+    
+    //MARK: - Private Methods
+    private func configTimeObserver() {
+        if let progressHandler = progressHandler {
+            _timeObserver = _player.addPeriodicTimeObserver(forInterval: CMTimeMake(1, _timeScale),
+                                                            queue: DispatchQueue.main,
+                                                            using: progressHandler)
         }
     }
 }
@@ -82,9 +105,9 @@ public enum KeyframePickerVideoFillMode: Int {
     }
 }
 
-class KeyframePickerVideoPlayerView: UIView {
+open class KeyframePickerVideoPlayerView: UIView {
     //MARK: - override
-    override class var layerClass: Swift.AnyClass {
+    override open class var layerClass: Swift.AnyClass {
         return AVPlayerLayer.self
     }
     
@@ -117,7 +140,7 @@ class KeyframePickerVideoPlayerView: UIView {
         self.playerLayer.backgroundColor = playerLayerBackgroundColor
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 
 private let animationDuration = 0.3
 
-class KeyframePickerCursorViewController: UIViewController {
+open class KeyframePickerCursorViewController: UIViewController {
 
     //MARK: - IBOutlets
     @IBOutlet weak var timeContainerView: UIView!
@@ -62,14 +62,14 @@ class KeyframePickerCursorViewController: UIViewController {
     }
     
     //MARK: - Life Cycle
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         configUI()
     }
 
-    override func didReceiveMemoryWarning() {
+    override open func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
