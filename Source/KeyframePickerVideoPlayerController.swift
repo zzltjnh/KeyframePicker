@@ -170,6 +170,7 @@ open class KeyframePickerVideoPlayerView: UIView {
         }
     }
     
+    //MARK: - Init Related
     override init(frame: CGRect) {
         super.init(frame: frame)
 

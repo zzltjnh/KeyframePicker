@@ -18,13 +18,13 @@ open class KeyframePickerViewController: UIViewController {
     public var videoPath: String?
     public let imageGenerator = KeyframeImageGenerator()
     
-    //MARK: - Private Properties
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var cursorContainerView: UIView!
-    
     //MARK: - ChildViewControllers
     weak var cursorContainerViewController: KeyframePickerCursorViewController!
     weak var videoPlayerController: KeyframePickerVideoPlayerController!
+    
+    //MARK: - Private Properties
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var cursorContainerView: UIView!
     
     private var _asset: AVAsset? {
         if let asset = asset {
@@ -46,7 +46,7 @@ open class KeyframePickerViewController: UIViewController {
         return nil
     }
     
-    fileprivate var displayKeyframeImages: [KeyframeImage] = []
+    fileprivate var _displayKeyframeImages: [KeyframeImage] = []
 
     //MARK: - Life Cycle
     open override func viewDidLoad() {
@@ -66,7 +66,7 @@ open class KeyframePickerViewController: UIViewController {
     open func loadData() {
         if let _asset = _asset {
             imageGenerator.generateDefaultSequenceOfImages(from: _asset) { [weak self] in
-                self?.displayKeyframeImages.append(contentsOf: $0)
+                self?._displayKeyframeImages.append(contentsOf: $0)
                 self?.updateUI()
             }
         }
@@ -105,12 +105,12 @@ open class KeyframePickerViewController: UIViewController {
 //MARK: - UICollectionView Methods
 extension KeyframePickerViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return displayKeyframeImages.count
+        return _displayKeyframeImages.count
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: KeyframePickerCollectionViewCell.self), for: indexPath) as! KeyframePickerCollectionViewCell
-        cell.keyframeImage = displayKeyframeImages[indexPath.row]
+        cell.keyframeImage = _displayKeyframeImages[indexPath.row]
         cell.updateUI()
         
         return cell
