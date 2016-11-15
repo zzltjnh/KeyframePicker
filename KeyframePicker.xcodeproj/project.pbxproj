@@ -14,6 +14,7 @@
 		51888D4A1DD9BDE000AF1744 /* KeyframePickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51888D491DD9BDDF00AF1744 /* KeyframePickerCollectionViewCell.swift */; };
 		51888D4B1DD9C8A100AF1744 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 517AD48E1DD487FE0034A89D /* Info.plist */; };
 		51888D4D1DDAACF900AF1744 /* KeyframePickerCursorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51888D4C1DDAACF900AF1744 /* KeyframePickerCursorViewController.swift */; };
+		51888D501DDAEBAA00AF1744 /* KeyframePickerVideoPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51888D4F1DDAEBAA00AF1744 /* KeyframePickerVideoPlayerController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		51888D471DD9BC4D00AF1744 /* KeyframePicker.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = KeyframePicker.storyboard; sourceTree = "<group>"; };
 		51888D491DD9BDDF00AF1744 /* KeyframePickerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyframePickerCollectionViewCell.swift; sourceTree = "<group>"; };
 		51888D4C1DDAACF900AF1744 /* KeyframePickerCursorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyframePickerCursorViewController.swift; sourceTree = "<group>"; };
+		51888D4F1DDAEBAA00AF1744 /* KeyframePickerVideoPlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyframePickerVideoPlayerController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				51888D471DD9BC4D00AF1744 /* KeyframePicker.storyboard */,
 				51888D491DD9BDDF00AF1744 /* KeyframePickerCollectionViewCell.swift */,
 				51888D4C1DDAACF900AF1744 /* KeyframePickerCursorViewController.swift */,
+				51888D4F1DDAEBAA00AF1744 /* KeyframePickerVideoPlayerController.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -153,6 +156,7 @@
 			files = (
 				51888D4A1DD9BDE000AF1744 /* KeyframePickerCollectionViewCell.swift in Sources */,
 				517AD49D1DD59B210034A89D /* KeyframePickerViewController.swift in Sources */,
+				51888D501DDAEBAA00AF1744 /* KeyframePickerVideoPlayerController.swift in Sources */,
 				51888D4D1DDAACF900AF1744 /* KeyframePickerCursorViewController.swift in Sources */,
 				517AD49A1DD59A860034A89D /* KeyframeImageGenerator.swift in Sources */,
 			);

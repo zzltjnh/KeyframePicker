@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import AVKit
 
 open class KeyframePickerViewController: UIViewController {
 
@@ -21,7 +22,9 @@ open class KeyframePickerViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var cursorContainerView: UIView!
     
+    //MARK: - ChildViewControllers
     weak var cursorContainerViewController: KeyframePickerCursorViewController!
+    weak var videoPlayerController: KeyframePickerVideoPlayerController!
     
     private var _asset: AVAsset? {
         if let asset = asset {
@@ -86,9 +89,11 @@ open class KeyframePickerViewController: UIViewController {
     open override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == String(describing: KeyframePickerCursorViewController.self) {
             self.cursorContainerViewController = segue.destination as! KeyframePickerCursorViewController
+        } else if segue.identifier == String(describing: KeyframePickerVideoPlayerController.self) {
+            self.videoPlayerController = segue.destination as! KeyframePickerVideoPlayerController
+            self.videoPlayerController.asset = _asset
         }
     }
-    
 }
 
 //MARK: - UICollectionView Methods

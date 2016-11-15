@@ -56,6 +56,11 @@
                                     <outlet property="delegate" destination="eaV-a8-Sv7" id="vMi-jI-VVC"/>
                                 </connections>
                             </collectionView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JA0-JU-fk9">
+                                <connections>
+                                    <segue destination="9SR-AG-cMO" kind="embed" identifier="KeyframePickerVideoPlayerController" id="e3f-CD-YFL"/>
+                                </connections>
+                            </containerView>
                             <containerView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ek1-hH-iE2" userLabel="Cursor Container View">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="8By-Bd-10M"/>
@@ -70,8 +75,12 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="DfW-x1-MVE" secondAttribute="trailing" id="4lh-A0-N2u"/>
                             <constraint firstItem="RAE-eD-EoN" firstAttribute="top" secondItem="DfW-x1-MVE" secondAttribute="bottom" id="AR5-Oz-QWF"/>
+                            <constraint firstAttribute="trailing" secondItem="JA0-JU-fk9" secondAttribute="trailing" id="Gls-ef-8Hh"/>
                             <constraint firstItem="DfW-x1-MVE" firstAttribute="leading" secondItem="Nen-VJ-hC7" secondAttribute="leading" id="MoB-9s-79W"/>
+                            <constraint firstItem="DfW-x1-MVE" firstAttribute="top" secondItem="JA0-JU-fk9" secondAttribute="bottom" id="Y15-du-l9m"/>
+                            <constraint firstItem="JA0-JU-fk9" firstAttribute="leading" secondItem="Nen-VJ-hC7" secondAttribute="leading" id="ijS-Nh-et9"/>
                             <constraint firstItem="RAE-eD-EoN" firstAttribute="top" secondItem="Ek1-hH-iE2" secondAttribute="bottom" id="lvv-Uh-1fc"/>
+                            <constraint firstItem="JA0-JU-fk9" firstAttribute="top" secondItem="USg-s1-hvJ" secondAttribute="bottom" id="qEG-rr-eJH"/>
                             <constraint firstItem="Ek1-hH-iE2" firstAttribute="centerX" secondItem="Nen-VJ-hC7" secondAttribute="centerX" id="zxN-ui-WVD"/>
                         </constraints>
                     </view>
@@ -144,7 +153,21 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Da-BX-Y26" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="604.79999999999995" y="384.10794602698655"/>
+            <point key="canvasLocation" x="-131" y="470"/>
+        </scene>
+        <!--Keyframe Picker Video Player Controller-->
+        <scene sceneID="VQ1-pP-fJF">
+            <objects>
+                <viewController storyboardIdentifier="KeyframePickerVideoPlayerController" id="9SR-AG-cMO" customClass="KeyframePickerVideoPlayerController" customModule="KeyframePicker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zhh-fS-9qf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="567"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lTT-az-aVv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1089" y="-10"/>
         </scene>
     </scenes>
 </document>
