@@ -92,6 +92,12 @@ open class KeyframePickerViewController: UIViewController {
         } else if segue.identifier == String(describing: KeyframePickerVideoPlayerController.self) {
             self.videoPlayerController = segue.destination as! KeyframePickerVideoPlayerController
             self.videoPlayerController.asset = _asset
+            self.videoPlayerController.didPlayToEndTimeHandler = { [weak self] in
+                //TODO
+            }
+            self.videoPlayerController.failedToPlayToEndTimeHandler = { [weak self] in
+                //TODO
+            }
         }
     }
 }

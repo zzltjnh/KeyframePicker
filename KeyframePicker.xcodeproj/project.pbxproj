@@ -62,11 +62,11 @@
 				517AD48E1DD487FE0034A89D /* Info.plist */,
 				517AD48F1DD487FE0034A89D /* KeyframePicker.h */,
 				517AD49B1DD59B210034A89D /* KeyframePickerViewController.swift */,
-				517AD4991DD59A860034A89D /* KeyframeImageGenerator.swift */,
-				51888D471DD9BC4D00AF1744 /* KeyframePicker.storyboard */,
+				51888D4F1DDAEBAA00AF1744 /* KeyframePickerVideoPlayerController.swift */,
 				51888D491DD9BDDF00AF1744 /* KeyframePickerCollectionViewCell.swift */,
 				51888D4C1DDAACF900AF1744 /* KeyframePickerCursorViewController.swift */,
-				51888D4F1DDAEBAA00AF1744 /* KeyframePickerVideoPlayerController.swift */,
+				517AD4991DD59A860034A89D /* KeyframeImageGenerator.swift */,
+				51888D471DD9BC4D00AF1744 /* KeyframePicker.storyboard */,
 			);
 			path = Source;
 			sourceTree = "<group>";
