@@ -24,7 +24,7 @@ class PhotoLibraryVideosPickerViewController: UIViewController {
     }
     
     func loadData() {
-        // 读取系统相册中的视频
+        // read videos from photo library
         let fetchResult = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumVideos, options: nil)
         
         fetchResult.enumerateObjects ({ (assetCollection, _, _) in
@@ -60,7 +60,6 @@ extension PhotoLibraryVideosPickerViewController: UICollectionViewDataSource, UI
         return 1
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return videoModels.count
     }
@@ -84,15 +83,18 @@ extension PhotoLibraryVideosPickerViewController: UICollectionViewDataSource, UI
         
         // Get AVAsset from PHAsset
         PHImageManager.default().requestAVAsset(forVideo: asset, options: nil) { [weak self] (avAsset, _, _) in
-            //该闭包是在非主线程回调，因此UI操作应放到主线程执行
+            //perform on mainQueue
             DispatchQueue.main.async {
                 let storyBoard = UIStoryboard(name: "KeyframePicker", bundle: Bundle(for: KeyframePickerViewController.self))
                 let keyframePicker = storyBoard.instantiateViewController(withIdentifier: String(describing: KeyframePickerViewController.self)) as! KeyframePickerViewController
                 
                 keyframePicker.asset = avAsset
+                // set handler
                 keyframePicker.generatedKeyframeImageHandler = { [weak self] image in
                     if let image = image {
+                        //display generated image（present modal）
                         self?.performSegue(withIdentifier: String(describing: KeyframeImageDisplayViewController.self), sender: image)
+                        print("generate image success")
                     } else {
                         print("generate image failed")
                     }

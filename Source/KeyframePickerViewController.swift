@@ -14,21 +14,21 @@ open class KeyframePickerViewController: UIViewController {
 
     //MARK: - Public Properties
     public var asset: AVAsset?
-    ///视频路径（本地或远程）
+    ///videoPath（local or remote）
     public var videoPath: String?
-    ///生成图片完成会执行该闭包
+    ///generat image completed closure
     public var generatedKeyframeImageHandler: SingleImageClosure?
     public let imageGenerator = KeyframeImageGenerator()
     public var playbackState: KeyframePickerVideoPlayerPlaybackState {
         return videoPlayerController.playbackState
     }
-    ///视频当前播放时间
+    ///current playback time of video
     public private(set) var currentTime = kCMTimeZero
     
     //MARK: - ChildViewControllers
-    /// 游标Controller
+    /// cursor Controller
     weak var cursorContainerViewController: KeyframePickerCursorViewController!
-    /// 播放器Controller
+    /// video player Controller
     weak var videoPlayerController: KeyframePickerVideoPlayerController!
     
     //MARK: - IBOutlets
@@ -60,7 +60,7 @@ open class KeyframePickerViewController: UIViewController {
         
         return nil
     }
-    /// 底部进度条所有图片的数组
+    /// progress bar images
     fileprivate var _displayKeyframeImages: [KeyframeImage] = []
     private var _statusBarHidden = false
     
@@ -104,7 +104,7 @@ open class KeyframePickerViewController: UIViewController {
     
     //MARK: - UI Related
     open func configUI() {
-        //即使内容很少也允许collectionView有弹性效果
+        //always Bounce
         collectionView.alwaysBounceHorizontal = true
         //左右留白（屏幕一半宽），目的是让collectionView中的第一个和最后一个cell能滚动到屏幕中央
         collectionView.contentInset = UIEdgeInsets(top: 0, left: UIScreen.main.bounds.size.width / 2, bottom: 0, right: UIScreen.main.bounds.size.width / 2)
@@ -173,7 +173,7 @@ open class KeyframePickerViewController: UIViewController {
             bigPlayButton.isHidden = true
         }
         
-        //toggle底部工具条、导航条
+        //toggle bottomBar、navigationBar
         navigationController?.setNavigationBarHidden(!(navigationController?.isNavigationBarHidden)!, animated: false)
         
         var alpha = 0
@@ -188,7 +188,7 @@ open class KeyframePickerViewController: UIViewController {
                     self.bottomContainerView.isHidden = true
                 }
         }
-        //toggle状态栏
+        //toggle statusBar
         _statusBarHidden = !_statusBarHidden
         self.setNeedsStatusBarAppearanceUpdate()
     }
@@ -223,7 +223,7 @@ open class KeyframePickerViewController: UIViewController {
     
     //MARK: - Playback Progress Changed
     func videoPlayerPlayback(to time: CMTime) {
-        //记录当前视频时间
+        //save current play time
         currentTime = time
         
         guard let _asset = _asset, videoPlayerController.playbackState == .playing else {
@@ -265,17 +265,17 @@ extension KeyframePickerViewController: UICollectionViewDataSource, UICollection
     }
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //资源为空或播放器未准备好
+        //_asset is nil or videoPlayer not readyForDisplay
         guard  let _asset = _asset, videoPlayerController.playbackState != .unknown else {
             return
         }
-        //播放中
+        //playing
         guard videoPlayerController.playbackState != .playing else {
             return
         }
-        //视频轨道即进度条长度
+        //length of video track
         let videoTrackLength = KeyframePickerViewCellWidth * _displayKeyframeImages.count
-        //当前位置
+        //current position
         var position = scrollView.contentOffset.x + UIScreen.main.bounds.size.width / 2
         if position < 0 {
             cursorContainerViewCenterConstraint.constant = -position
@@ -284,15 +284,15 @@ extension KeyframePickerViewController: UICollectionViewDataSource, UICollection
         }
         position = max(position, 0)
         position = min(position, CGFloat(videoTrackLength))
-        //当前拖动位置占视频的百分比
+        //percent of current position in progress bar
         let percent = position / CGFloat(videoTrackLength)
-        //当前拖动到视频的秒数
+        //
         let currentSecond = _asset.duration.seconds * Double(percent)
-        //当前拖动到视频的time
+        //
         let currentTime = CMTimeMakeWithSeconds(currentSecond, _asset.duration.timescale)
-        //设置游标时间值
+        //update cursor time value
         cursorContainerViewController.seconds = currentSecond
-        //将播放器切换到当前帧
+        //seek to currentTime
         videoPlayerController.seek(to: currentTime)
     }
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

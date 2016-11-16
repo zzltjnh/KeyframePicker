@@ -10,15 +10,9 @@ import UIKit
 import AVFoundation
 
 let KeyframePickerVideoPlayerInterfaceAnimationDuration = 0.15
-/// 播放器状态
+
+/// videoStatus
 ///
-/// - unknown:          未知（默认值）
-/// - prepared:         已准备好
-/// - playing:          播放中
-/// - paused:           已暂停
-/// - stoped:           停止
-/// - failed:           失败
-/// - didPlayToEndTime: 播放到结尾
 public enum KeyframePickerVideoPlayerPlaybackState {
     case unknown
     case prepared
@@ -30,9 +24,9 @@ public enum KeyframePickerVideoPlayerPlaybackState {
 }
 
 public enum KeyframePickerVideoPlayerStyle {
-    /// 导航条显示
+    /// navigationBar and bottomBar show
     case interfaceShow
-    /// 导航条隐藏
+    /// navigationBar and bottomBar hidden
     case interfaceHidden
     
     public mutating func toggle() {
@@ -78,13 +72,13 @@ open class KeyframePickerVideoPlayerController: UIViewController {
         return nil
     }()
     
-    /// 播放进度观察者
+    /// playback progress observer
     private var _timeObserver: Any?
     private var _timeScale: CMTimeScale {
         return asset?.duration.timescale ?? 600
     }
     
-    /// 播放状态
+    /// playback state
     public private(set) var playbackState: KeyframePickerVideoPlayerPlaybackState = .unknown {
         didSet {
             playbackStateChangedHandler?(playbackState)
@@ -126,13 +120,13 @@ open class KeyframePickerVideoPlayerController: UIViewController {
     
     //MARK: - Player Actions
     
-    /// 从头开始播放
+    /// play from beginning
     public func playFromBeginning() {
         seek(to: kCMTimeZero)
         playFromCurrentTime()
     }
     
-    /// 从当前进度开始播放
+    /// play from currentTime
     public func playFromCurrentTime() {
         guard playbackState != .unknown else {
             return
@@ -142,7 +136,7 @@ open class KeyframePickerVideoPlayerController: UIViewController {
     }
     
     
-    /// 如果播放器正在播放，将其暂停
+    /// pause if playing
     public func pause() {
         guard playbackState == .playing else {
             return
@@ -151,7 +145,7 @@ open class KeyframePickerVideoPlayerController: UIViewController {
         playbackState = .paused
     }
     
-    /// 停止播放并将视频画面切回第一帧
+    /// pause and seek to kCMTimeZero
     public func stop() {
         guard playbackState != .stoped else {
             return
@@ -161,7 +155,7 @@ open class KeyframePickerVideoPlayerController: UIViewController {
         playbackState = .stoped
     }
     
-    /// 将视频画面定格到某一帧
+    /// seek to time
     ///
     /// - parameter time: 想要定格的时间
     public func seek(to time: CMTime) {
@@ -172,7 +166,7 @@ open class KeyframePickerVideoPlayerController: UIViewController {
     
     //MARK: - Private Methods
     
-    /// 观察播放进度
+    /// observe playback progress
     private func configTimeObserver() {
         if let progressHandler = progressHandler {
             _timeObserver = _player.addPeriodicTimeObserver(forInterval: CMTimeMake(1, _timeScale),
@@ -181,9 +175,8 @@ open class KeyframePickerVideoPlayerController: UIViewController {
         }
     }
     
-    /// 添加播放相关通知
+    /// add playback notifications and application status notifications
     private func configNotifications() {
-        //添加播放完成和播放失败通知
         NotificationCenter.default.addObserver(self, selector: #selector(KeyframePickerVideoPlayerController.didPlayToEndTime), name: Notification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(KeyframePickerVideoPlayerController.failedToPlayToEndTime), name: Notification.Name.AVPlayerItemFailedToPlayToEndTime, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(KeyframePickerVideoPlayerController.applicationWillResignActive), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
