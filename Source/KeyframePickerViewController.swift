@@ -254,11 +254,12 @@ extension KeyframePickerViewController: UICollectionViewDataSource, UICollection
         guard videoPlayerController.playbackState != .playing else {
             return
         }
-        
-        //当前位置
-        let position = scrollView.contentOffset.x + UIScreen.main.bounds.size.width / 2
         //视频轨道即进度条长度
         let videoTrackLength = KeyframePickerViewCellWidth * _displayKeyframeImages.count
+        //当前位置
+        var position = scrollView.contentOffset.x + UIScreen.main.bounds.size.width / 2
+        position = max(position, 0)
+        position = min(position, CGFloat(videoTrackLength))
         //当前拖动位置占视频的百分比
         let percent = position / CGFloat(videoTrackLength)
         //当前拖动到视频的秒数
