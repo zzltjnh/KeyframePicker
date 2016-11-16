@@ -28,6 +28,7 @@ open class KeyframePickerViewController: UIViewController {
     //MARK: - IBOutlets
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var cursorContainerView: UIView!
+    @IBOutlet weak var bottomContainerView: UIView!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var bigPlayButton: UIButton!
@@ -54,6 +55,16 @@ open class KeyframePickerViewController: UIViewController {
     }
     
     fileprivate var _displayKeyframeImages: [KeyframeImage] = []
+    private var _statusBarHidden = false
+    
+    //MARK: - Override
+    override open var prefersStatusBarHidden: Bool {
+        return _statusBarHidden
+    }
+    
+    override open var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return .fade
+    }
 
     //MARK: - Life Cycle
     open override func viewDidLoad() {
@@ -62,6 +73,11 @@ open class KeyframePickerViewController: UIViewController {
         // Do any additional setup after loading the view.
         loadData()
         configUI()
+    }
+    
+    open override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
 
     open override func didReceiveMemoryWarning() {
@@ -121,6 +137,29 @@ open class KeyframePickerViewController: UIViewController {
     
     @IBAction func onBigPlay(_ sender: AnyObject) {
         videoPlayerController.playFromBeginning()
+    }
+    
+    @IBAction func onTapActionContentView(_ sender: AnyObject) {
+        //播放器样式反转
+        videoPlayerController.style.toggle()
+        //toggle底部工具条、导航条
+        navigationController?.setNavigationBarHidden(!(navigationController?.isNavigationBarHidden)!, animated: false)
+        
+        var alpha = 0
+        if bottomContainerView.isHidden {
+            bottomContainerView.isHidden = false
+            alpha = 1
+        }
+        UIView.animate(withDuration: KeyframePickerVideoPlayerInterfaceAnimationDuration, animations: {
+            self.bottomContainerView.alpha = CGFloat(alpha)
+            }) { _ in
+                if alpha == 0 {
+                    self.bottomContainerView.isHidden = true
+                }
+        }
+        //toggle状态栏
+        _statusBarHidden = !_statusBarHidden
+        self.setNeedsStatusBarAppearanceUpdate()
     }
     
     //MARK: - PlaybackState Changed

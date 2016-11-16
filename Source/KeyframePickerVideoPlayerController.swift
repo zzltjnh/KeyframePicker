@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 
+let KeyframePickerVideoPlayerInterfaceAnimationDuration = 0.15
 /// 播放器状态
 ///
 /// - unknown:          未知（默认值）
@@ -33,6 +34,15 @@ public enum KeyframePickerVideoPlayerStyle {
     case interfaceShow
     /// 导航条隐藏
     case interfaceHidden
+    
+    public mutating func toggle() {
+        switch self {
+        case .interfaceShow:
+            self = .interfaceHidden
+        case .interfaceHidden:
+            self = .interfaceShow
+        }
+    }
 }
 
 public typealias KeyframePickerVideoPlayerProgressHandler = (CMTime) -> Void
@@ -230,7 +240,7 @@ open class KeyframePickerVideoPlayerView: UIView {
     
     public var playerLayerBackgroundColor = UIColor.white.cgColor {
         didSet {
-            self.playerLayer.backgroundColor = UIColor.white.cgColor
+            self.playerLayer.backgroundColor = playerLayerBackgroundColor
         }
     }
     
@@ -238,11 +248,13 @@ open class KeyframePickerVideoPlayerView: UIView {
         didSet {
             var color = UIColor.white.cgColor
             switch style {
-            case .interfaceShow: color = UIColor.white.cgColor
-            case .interfaceHidden: color = UIColor.blue.cgColor
+            case .interfaceShow:
+                color = UIColor.white.cgColor
+            case .interfaceHidden:
+                color = UIColor.black.cgColor
             }
             
-            UIView.animate(withDuration: 0.3) { 
+            UIView.animate(withDuration: KeyframePickerVideoPlayerInterfaceAnimationDuration) {
                 self.playerLayerBackgroundColor = color
             }
         }

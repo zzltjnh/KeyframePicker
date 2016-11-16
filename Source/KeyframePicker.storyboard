@@ -23,23 +23,38 @@
                                     <segue destination="9SR-AG-cMO" kind="embed" identifier="KeyframePickerVideoPlayerController" id="e3f-CD-YFL"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Azn-xI-7p7" userLabel="Play Button">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WEo-9a-eI6" userLabel="Action Content View">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Azn-xI-7p7" userLabel="Play Button">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="1vt-gI-Gf1"/>
+                                            <constraint firstAttribute="height" constant="70" id="mzR-6D-hwT"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="7" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" image="play_big"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="35"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="onBigPlay:" destination="eaV-a8-Sv7" eventType="touchUpInside" id="57k-Tv-W56"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="1vt-gI-Gf1"/>
-                                    <constraint firstAttribute="height" constant="70" id="mzR-6D-hwT"/>
+                                    <constraint firstItem="Azn-xI-7p7" firstAttribute="centerY" secondItem="WEo-9a-eI6" secondAttribute="centerY" id="QpN-0x-W9l"/>
+                                    <constraint firstItem="Azn-xI-7p7" firstAttribute="centerX" secondItem="WEo-9a-eI6" secondAttribute="centerX" id="SsB-86-e8B"/>
+                                    <constraint firstItem="Azn-xI-7p7" firstAttribute="centerY" secondItem="WEo-9a-eI6" secondAttribute="centerY" id="o4d-hL-gAX"/>
+                                    <constraint firstItem="Azn-xI-7p7" firstAttribute="centerX" secondItem="WEo-9a-eI6" secondAttribute="centerX" id="pnK-FT-xym"/>
                                 </constraints>
-                                <inset key="imageEdgeInsets" minX="7" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" image="play_big"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="35"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="onBigPlay:" destination="eaV-a8-Sv7" eventType="touchUpInside" id="57k-Tv-W56"/>
+                                    <outletCollection property="gestureRecognizers" destination="Erk-d3-oVY" appends="YES" id="8JH-fc-gvq"/>
                                 </connections>
-                            </button>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Jn-yY-8gh" userLabel="Bottom Container View">
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lIA-Wj-vWT" userLabel="Background View">
@@ -70,7 +85,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="KeyframePickerCollectionViewCell" id="dkS-cx-Azc" customClass="KeyframePickerCollectionViewCell" customModule="KeyframePicker" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="-1" width="95" height="42"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="95" height="42"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="95" height="42"/>
@@ -157,19 +172,22 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="WEo-9a-eI6" firstAttribute="bottom" secondItem="JA0-JU-fk9" secondAttribute="bottom" id="2Rh-wf-45n"/>
+                            <constraint firstItem="WEo-9a-eI6" firstAttribute="trailing" secondItem="JA0-JU-fk9" secondAttribute="trailing" id="2Ul-s5-ZQM"/>
                             <constraint firstAttribute="bottom" secondItem="JA0-JU-fk9" secondAttribute="bottom" id="BHx-Wk-TxC"/>
                             <constraint firstAttribute="trailing" secondItem="JA0-JU-fk9" secondAttribute="trailing" id="Gls-ef-8Hh"/>
                             <constraint firstAttribute="bottom" secondItem="0Jn-yY-8gh" secondAttribute="bottom" id="TB5-tK-0OW"/>
+                            <constraint firstItem="WEo-9a-eI6" firstAttribute="top" secondItem="JA0-JU-fk9" secondAttribute="top" id="fzK-vJ-7IF"/>
                             <constraint firstItem="0Jn-yY-8gh" firstAttribute="leading" secondItem="Nen-VJ-hC7" secondAttribute="leading" id="hEf-Je-XI5"/>
                             <constraint firstItem="JA0-JU-fk9" firstAttribute="leading" secondItem="Nen-VJ-hC7" secondAttribute="leading" id="ijS-Nh-et9"/>
-                            <constraint firstItem="Azn-xI-7p7" firstAttribute="centerX" secondItem="Nen-VJ-hC7" secondAttribute="centerX" id="tOJ-qL-mhb"/>
+                            <constraint firstItem="WEo-9a-eI6" firstAttribute="leading" secondItem="JA0-JU-fk9" secondAttribute="leading" id="tE6-IT-eR8"/>
                             <constraint firstAttribute="trailing" secondItem="0Jn-yY-8gh" secondAttribute="trailing" id="vgy-E4-P8G"/>
-                            <constraint firstItem="Azn-xI-7p7" firstAttribute="centerY" secondItem="Nen-VJ-hC7" secondAttribute="centerY" id="wcT-2E-Xco"/>
                             <constraint firstItem="JA0-JU-fk9" firstAttribute="top" secondItem="Nen-VJ-hC7" secondAttribute="top" id="xUj-tU-hln"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="bigPlayButton" destination="Azn-xI-7p7" id="9Zo-5Q-Lzy"/>
+                        <outlet property="bottomContainerView" destination="0Jn-yY-8gh" id="Xb6-0b-nh4"/>
                         <outlet property="collectionView" destination="DfW-x1-MVE" id="hoX-ph-uxv"/>
                         <outlet property="cursorContainerView" destination="Ek1-hH-iE2" id="sy4-rb-X9v"/>
                         <outlet property="pauseButton" destination="8qm-7M-dV5" id="N12-ab-p0i"/>
@@ -177,6 +195,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWU-kM-9mf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Erk-d3-oVY">
+                    <connections>
+                        <action selector="onTapActionContentView:" destination="eaV-a8-Sv7" id="b3t-j1-DJb"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-130.40000000000001" y="-10.344827586206897"/>
         </scene>
