@@ -20,6 +20,7 @@ open class KeyframePickerViewController: UIViewController {
     public var playbackState: KeyframePickerVideoPlayerPlaybackState {
         return videoPlayerController.playbackState
     }
+    public private(set) var currentTime = kCMTimeZero
     
     //MARK: - ChildViewControllers
     weak var cursorContainerViewController: KeyframePickerCursorViewController!
@@ -208,10 +209,12 @@ open class KeyframePickerViewController: UIViewController {
         guard let asset = asset, videoPlayerController.playbackState == .playing else {
             return
         }
+        currentTime = time
         let percent = time.seconds / asset.duration.seconds
         let videoTrackLength = KeyframePickerViewCellWidth * _displayKeyframeImages.count
         let position = CGFloat(videoTrackLength) * CGFloat(percent) - UIScreen.main.bounds.size.width / 2
         collectionView.contentOffset = CGPoint(x: position, y: collectionView.contentOffset.y)
+        cursorContainerViewController.seconds = time.seconds
     }
 }
 
@@ -252,14 +255,25 @@ extension KeyframePickerViewController: UICollectionViewDataSource, UICollection
             return
         }
         
+        //当前位置
         let position = scrollView.contentOffset.x + UIScreen.main.bounds.size.width / 2
+        //视频轨道即进度条长度
         let videoTrackLength = KeyframePickerViewCellWidth * _displayKeyframeImages.count
-        
+        //当前拖动位置占视频的百分比
         let percent = position / CGFloat(videoTrackLength)
+        //当前拖动到视频的秒数
         let currentSecond = asset.duration.seconds * Double(percent)
+        //当前拖动到视频的time
         let currentTime = CMTimeMakeWithSeconds(currentSecond, asset.duration.timescale)
-        print("\(currentTime.timescale)")
+        //设置游标时间值
         cursorContainerViewController.seconds = currentSecond
+        //将播放器切换到当前帧
         videoPlayerController.seek(to: currentTime)
+    }
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        videoPlayerController.pause()
+    }
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
     }
 }
