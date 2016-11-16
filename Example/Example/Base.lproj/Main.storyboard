@@ -18,10 +18,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sta-Fy-Ydo">
-                                <frame key="frameInset" minX="46" minY="112" width="289" height="59"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sta-Fy-Ydo">
                                 <color key="backgroundColor" red="1" green="0.52319834183673475" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Ac3-N1-jRg"/>
+                                </constraints>
                                 <state key="normal" title="Photo Library">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
@@ -29,30 +30,49 @@
                                     <segue destination="CFA-Rf-j00" kind="show" id="af7-dU-yp7"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mgf-vH-cgi">
-                                <frame key="frameInset" minX="46" minY="204" width="289" height="59"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mgf-vH-cgi">
                                 <color key="backgroundColor" red="1" green="1" blue="0.33694727891156462" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Local Video">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" title="TODO: Local Video">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="oxH-QC-mDp" kind="show" id="KSb-PM-2i0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vn4-V0-196">
-                                <frame key="frameInset" minX="46" minY="304" width="289" height="59"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vn4-V0-196">
                                 <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Remote Video">
+                                <state key="normal" title="TODO: Remote Video">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
                                     <segue destination="i25-WU-XDy" kind="show" id="bpy-Q3-VFa"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNv-Ws-ORR">
+                                <color key="backgroundColor" red="0.0" green="0.62901254251700678" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="TODO: Camera">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="sta-Fy-Ydo" secondAttribute="trailing" constant="30" id="4TS-BS-ry8"/>
+                            <constraint firstItem="QNv-Ws-ORR" firstAttribute="trailing" secondItem="vn4-V0-196" secondAttribute="trailing" id="Aq7-CY-AMQ"/>
+                            <constraint firstItem="QNv-Ws-ORR" firstAttribute="height" secondItem="vn4-V0-196" secondAttribute="height" id="D4Y-sb-QiE"/>
+                            <constraint firstItem="Mgf-vH-cgi" firstAttribute="top" secondItem="sta-Fy-Ydo" secondAttribute="bottom" constant="30" id="K4e-Z1-xIY"/>
+                            <constraint firstItem="QNv-Ws-ORR" firstAttribute="top" secondItem="vn4-V0-196" secondAttribute="bottom" constant="30" id="KeO-oP-gIN"/>
+                            <constraint firstItem="QNv-Ws-ORR" firstAttribute="leading" secondItem="vn4-V0-196" secondAttribute="leading" id="MeH-i6-lN3"/>
+                            <constraint firstItem="Mgf-vH-cgi" firstAttribute="trailing" secondItem="sta-Fy-Ydo" secondAttribute="trailing" id="NQa-Rv-P5F"/>
+                            <constraint firstItem="sta-Fy-Ydo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="48" id="Nwl-d6-Rn1"/>
+                            <constraint firstItem="vn4-V0-196" firstAttribute="leading" secondItem="sta-Fy-Ydo" secondAttribute="leading" id="Qa0-LE-pEE"/>
+                            <constraint firstItem="vn4-V0-196" firstAttribute="top" secondItem="Mgf-vH-cgi" secondAttribute="bottom" constant="30" id="Wne-Ku-keR"/>
+                            <constraint firstItem="vn4-V0-196" firstAttribute="trailing" secondItem="sta-Fy-Ydo" secondAttribute="trailing" id="h9f-03-3TY"/>
+                            <constraint firstItem="sta-Fy-Ydo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="lkH-Ge-6Kv"/>
+                            <constraint firstItem="Mgf-vH-cgi" firstAttribute="leading" secondItem="sta-Fy-Ydo" secondAttribute="leading" id="nqB-Jm-guh"/>
+                            <constraint firstItem="Mgf-vH-cgi" firstAttribute="height" secondItem="sta-Fy-Ydo" secondAttribute="height" id="pVv-Uc-P5G"/>
+                            <constraint firstItem="vn4-V0-196" firstAttribute="height" secondItem="sta-Fy-Ydo" secondAttribute="height" id="xcD-5h-dZ2"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Example" id="X9d-Ic-rtr"/>
                 </viewController>
