@@ -108,7 +108,7 @@ open class KeyframePickerViewController: UIViewController {
     
     //MARK: - Button Actions
     @IBAction func onPlay(_ sender: AnyObject) {
-        if playbackState == .prepared || playbackState == .didPlayToEndTime {
+        if playbackState == .didPlayToEndTime {
             videoPlayerController.playFromBeginning()
         } else {
             videoPlayerController.playFromCurrentTime()
@@ -165,5 +165,13 @@ extension KeyframePickerViewController: UICollectionViewDataSource, UICollection
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 67, height: collectionView.frame.size.height)
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if playbackState == .playing {
+            videoPlayerController.pause()
+        } else {
+            videoPlayerController.playFromCurrentTime()
+        }
     }
 }
