@@ -143,7 +143,22 @@ open class KeyframeImageGenerator: NSObject {
     /// - parameter asset:   AVAsset
     /// - parameter closure: 图片生成完成后会执行该闭包回调，该闭包参数为按时间排序的数组
     open func generateDefaultSequenceOfImages(from asset: AVAsset, closure: @escaping SequenceOfImagesClosure) {
-        // #warnning times is test value
-        generateSequenceOfImages(from: asset, seconds: [0, 1, 2, 3, 4, 5], closure: closure)
+        // 这里的规则比较随意
+        let second = Int(asset.duration.seconds)
+        let maxCount = 20
+        var requestedCount = 0
+        if second <= 5 {
+            requestedCount = second + 1
+        } else {
+            requestedCount = min(second * 2, maxCount)
+        }
+        
+        let spacing = asset.duration.seconds / Float64(requestedCount)
+        var seconds: [Float64] = []
+        for i in 0..<requestedCount {
+            seconds.append(Float64(i) * spacing)
+        }
+        
+        generateSequenceOfImages(from: asset, seconds: seconds, closure: closure)
     }
 }
