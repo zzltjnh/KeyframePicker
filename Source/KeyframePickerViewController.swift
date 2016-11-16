@@ -136,12 +136,21 @@ open class KeyframePickerViewController: UIViewController {
     }
     
     @IBAction func onBigPlay(_ sender: AnyObject) {
-        videoPlayerController.playFromBeginning()
+        onPlay(sender)
     }
     
     @IBAction func onTapActionContentView(_ sender: AnyObject) {
         //播放器样式反转
         videoPlayerController.style.toggle()
+        if videoPlayerController.style == .interfaceHidden,
+            videoPlayerController.playbackState != .playing {
+            bigPlayButton.isHidden = false
+        } else if videoPlayerController.playbackState == .prepared {
+            bigPlayButton.isHidden = false
+        } else {
+            bigPlayButton.isHidden = true
+        }
+        
         //toggle底部工具条、导航条
         navigationController?.setNavigationBarHidden(!(navigationController?.isNavigationBarHidden)!, animated: false)
         
@@ -184,6 +193,9 @@ open class KeyframePickerViewController: UIViewController {
         } else if playbackState == .didPlayToEndTime {
             playButton.isHidden = false
             pauseButton.isHidden = true
+            if videoPlayerController.style == .interfaceHidden {
+                bigPlayButton.isHidden = false
+            }
         }
     }
 }
