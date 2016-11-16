@@ -119,6 +119,10 @@ open class KeyframePickerViewController: UIViewController {
                 [weak self] playbackState in
                 self?.videoPlayerPlaybackStateChanged(to: playbackState)
             }
+            self.videoPlayerController.progressHandler = {
+                [weak self] time in
+                self?.videoPlayerPlayback(to: time)
+            }
         }
     }
     
@@ -198,8 +202,20 @@ open class KeyframePickerViewController: UIViewController {
             }
         }
     }
+    
+    //MARK: - Playback Progress Changed
+    func videoPlayerPlayback(to time: CMTime) {
+        guard let asset = asset, videoPlayerController.playbackState == .playing else {
+            return
+        }
+        let percent = time.seconds / asset.duration.seconds
+        let videoTrackLength = KeyframePickerViewCellWidth * _displayKeyframeImages.count
+        let position = CGFloat(videoTrackLength) * CGFloat(percent) - UIScreen.main.bounds.size.width / 2
+        collectionView.contentOffset = CGPoint(x: position, y: collectionView.contentOffset.y)
+    }
 }
 
+private let KeyframePickerViewCellWidth = 67
 //MARK: - UICollectionView Methods
 extension KeyframePickerViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -215,7 +231,7 @@ extension KeyframePickerViewController: UICollectionViewDataSource, UICollection
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 67, height: collectionView.frame.size.height)
+        return CGSize(width: CGFloat(KeyframePickerViewCellWidth), height: collectionView.frame.size.height)
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -224,5 +240,26 @@ extension KeyframePickerViewController: UICollectionViewDataSource, UICollection
         } else {
             videoPlayerController.playFromCurrentTime()
         }
+    }
+    
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        //资源为空或播放器未准备好
+        guard  let asset = asset, videoPlayerController.playbackState != .unknown else {
+            return
+        }
+        //播放中
+        guard videoPlayerController.playbackState != .playing else {
+            return
+        }
+        
+        let position = scrollView.contentOffset.x + UIScreen.main.bounds.size.width / 2
+        let videoTrackLength = KeyframePickerViewCellWidth * _displayKeyframeImages.count
+        
+        let percent = position / CGFloat(videoTrackLength)
+        let currentSecond = asset.duration.seconds * Double(percent)
+        let currentTime = CMTimeMakeWithSeconds(currentSecond, asset.duration.timescale)
+        print("\(currentTime.timescale)")
+        cursorContainerViewController.seconds = currentSecond
+        videoPlayerController.seek(to: currentTime)
     }
 }
