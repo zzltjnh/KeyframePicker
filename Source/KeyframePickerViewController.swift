@@ -20,10 +20,13 @@ open class KeyframePickerViewController: UIViewController {
     public var playbackState: KeyframePickerVideoPlayerPlaybackState {
         return videoPlayerController.playbackState
     }
+    ///视频当前播放时间
     public private(set) var currentTime = kCMTimeZero
     
     //MARK: - ChildViewControllers
+    /// 游标Controller
     weak var cursorContainerViewController: KeyframePickerCursorViewController!
+    /// 播放器Controller
     weak var videoPlayerController: KeyframePickerVideoPlayerController!
     
     //MARK: - IBOutlets
@@ -54,7 +57,7 @@ open class KeyframePickerViewController: UIViewController {
         
         return nil
     }
-    
+    /// 底部进度条所有图片的数组
     fileprivate var _displayKeyframeImages: [KeyframeImage] = []
     private var _statusBarHidden = false
     
@@ -206,10 +209,12 @@ open class KeyframePickerViewController: UIViewController {
     
     //MARK: - Playback Progress Changed
     func videoPlayerPlayback(to time: CMTime) {
+        //记录当前视频时间
+        currentTime = time
+        
         guard let asset = asset, videoPlayerController.playbackState == .playing else {
             return
         }
-        currentTime = time
         let percent = time.seconds / asset.duration.seconds
         let videoTrackLength = KeyframePickerViewCellWidth * _displayKeyframeImages.count
         let position = CGFloat(videoTrackLength) * CGFloat(percent) - UIScreen.main.bounds.size.width / 2

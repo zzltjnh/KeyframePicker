@@ -184,8 +184,10 @@ open class KeyframePickerVideoPlayerController: UIViewController {
     /// 添加播放相关通知
     private func configNotifications() {
         //添加播放完成和播放失败通知
-        NotificationCenter.default.addObserver(self, selector: #selector(didPlayToEndTime), name: Notification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(failedToPlayToEndTime), name: Notification.Name.AVPlayerItemFailedToPlayToEndTime, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(KeyframePickerVideoPlayerController.didPlayToEndTime), name: Notification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(KeyframePickerVideoPlayerController.failedToPlayToEndTime), name: Notification.Name.AVPlayerItemFailedToPlayToEndTime, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(KeyframePickerVideoPlayerController.applicationWillResignActive), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(KeyframePickerVideoPlayerController.applicationDidEnterBackground), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
     }
     
     //MARK: - Notification Methods
@@ -195,6 +197,14 @@ open class KeyframePickerVideoPlayerController: UIViewController {
     
     @objc private func failedToPlayToEndTime() {
         playbackState = .failed
+    }
+    
+    @objc private func applicationWillResignActive() {
+        pause()
+    }
+    
+    @objc private func applicationDidEnterBackground() {
+        pause()
     }
 }
 
