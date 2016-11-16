@@ -21,6 +21,7 @@
 		51888D171DD7494800AF1744 /* KeyframePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517AD4A51DD5AC130034A89D /* KeyframePicker.framework */; };
 		51888D1B1DD7500E00AF1744 /* KeyframePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517AD4A51DD5AC130034A89D /* KeyframePicker.framework */; };
 		51888D1C1DD7500E00AF1744 /* KeyframePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 517AD4A51DD5AC130034A89D /* KeyframePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		51DF0CA11DDC7765001462F8 /* KeyframeImageDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DF0CA01DDC7765001462F8 /* KeyframeImageDisplayViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		517AD4BF1DD5C3F90034A89D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		517AD4C21DD5C4320034A89D /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		51888D131DD5CE6800AF1744 /* PhotoLibraryPickerViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryPickerViewCell.swift; sourceTree = "<group>"; };
+		51DF0CA01DDC7765001462F8 /* KeyframeImageDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyframeImageDisplayViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 				517AD4B41DD5C3C10034A89D /* PhotoLibraryVideosPickerViewController.swift */,
 				517AD4B31DD5C3C10034A89D /* LocalVideosPickerViewController.swift */,
 				517AD4B51DD5C3C10034A89D /* RemoteVideosPickerViewController.swift */,
+				51DF0CA01DDC7765001462F8 /* KeyframeImageDisplayViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				517AD47C1DD4857E0034A89D /* AppDelegate.swift in Sources */,
 				51888D141DD5CE6800AF1744 /* PhotoLibraryPickerViewCell.swift in Sources */,
 				517AD4BB1DD5C3C10034A89D /* PhotoLibraryVideosPickerViewController.swift in Sources */,
+				51DF0CA11DDC7765001462F8 /* KeyframeImageDisplayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

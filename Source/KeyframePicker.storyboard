@@ -185,6 +185,13 @@
                             <constraint firstItem="JA0-JU-fk9" firstAttribute="top" secondItem="Nen-VJ-hC7" secondAttribute="top" id="xUj-tU-hln"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="eT4-Dy-7gz">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Iin-Vq-1jy">
+                            <connections>
+                                <action selector="onDone:" destination="eaV-a8-Sv7" id="dh8-pu-QKU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="bigPlayButton" destination="Azn-xI-7p7" id="9Zo-5Q-Lzy"/>
                         <outlet property="bottomContainerView" destination="0Jn-yY-8gh" id="Xb6-0b-nh4"/>
@@ -201,7 +208,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-130.40000000000001" y="-10.344827586206897"/>
+            <point key="canvasLocation" x="808.79999999999995" y="-10.344827586206897"/>
         </scene>
         <!--Keyframe Picker Cursor View Controller-->
         <scene sceneID="t7g-77-gtH">
@@ -285,7 +292,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lTT-az-aVv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1089" y="-10"/>
+            <point key="canvasLocation" x="2028" y="-10.344827586206897"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nPO-Yf-sji">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fRg-58-VwU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hd7-vD-0e9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="eaV-a8-Sv7" kind="relationship" relationship="rootViewController" id="6DS-bH-avz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nhM-VN-kXF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-130.40000000000001" y="-10.344827586206897"/>
         </scene>
     </scenes>
     <resources>

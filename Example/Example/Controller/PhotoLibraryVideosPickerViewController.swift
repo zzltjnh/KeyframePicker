@@ -44,15 +44,15 @@ class PhotoLibraryVideosPickerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier ==  String(describing: KeyframeImageDisplayViewController.self) {
+            let vc = segue.destination as! KeyframeImageDisplayViewController
+            vc.image = sender as? KeyframeImage
+        }
     }
-    */
 }
 
 extension PhotoLibraryVideosPickerViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -90,6 +90,13 @@ extension PhotoLibraryVideosPickerViewController: UICollectionViewDataSource, UI
                 let keyframePicker = storyBoard.instantiateViewController(withIdentifier: String(describing: KeyframePickerViewController.self)) as! KeyframePickerViewController
                 
                 keyframePicker.asset = avAsset
+                keyframePicker.generatedKeyframeImageHandler = { [weak self] image in
+                    if let image = image {
+                        self?.performSegue(withIdentifier: String(describing: KeyframeImageDisplayViewController.self), sender: image)
+                    } else {
+                        print("generate image failed")
+                    }
+                }
                 
                 self?.navigationController?.pushViewController(keyframePicker, animated: true)
             }

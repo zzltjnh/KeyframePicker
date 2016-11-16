@@ -6,6 +6,49 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Keyframe Image Display View Controller-->
+        <scene sceneID="H28-qq-qHf">
+            <objects>
+                <viewController storyboardIdentifier="KeyframeImageDisplayViewController" id="aCt-8Y-GPO" customClass="KeyframeImageDisplayViewController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="edu-ZK-UBL"/>
+                        <viewControllerLayoutGuide type="bottom" id="QYA-o0-Zjp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jBK-ky-DTh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Pf-ix-hek"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7na-K0-uAH">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="4iu-iz-nbK"/>
+                                    <constraint firstAttribute="height" constant="30" id="uHF-uk-Jk4"/>
+                                </constraints>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="onClose:" destination="aCt-8Y-GPO" eventType="touchUpInside" id="tGW-Pm-1Dr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QYA-o0-Zjp" firstAttribute="top" secondItem="7na-K0-uAH" secondAttribute="bottom" constant="40" id="F8r-68-TNf"/>
+                            <constraint firstItem="0Pf-ix-hek" firstAttribute="leading" secondItem="jBK-ky-DTh" secondAttribute="leading" id="TIf-xM-3KB"/>
+                            <constraint firstItem="7na-K0-uAH" firstAttribute="centerX" secondItem="jBK-ky-DTh" secondAttribute="centerX" id="fIa-hp-Qhg"/>
+                            <constraint firstItem="0Pf-ix-hek" firstAttribute="top" secondItem="jBK-ky-DTh" secondAttribute="top" id="gIl-wm-gOb"/>
+                            <constraint firstAttribute="trailing" secondItem="0Pf-ix-hek" secondAttribute="trailing" id="riG-A5-YO5"/>
+                            <constraint firstAttribute="bottom" secondItem="0Pf-ix-hek" secondAttribute="bottom" id="yQw-ST-ytY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="0Pf-ix-hek" id="H2N-Vp-6Xt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FQY-Pu-f2h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-326" y="-931"/>
+        </scene>
         <!--Example-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -78,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-366" y="136"/>
+            <point key="canvasLocation" x="-367" y="128"/>
         </scene>
         <!--Local Videos Picker View Controller-->
         <scene sceneID="EfV-IS-V01">
@@ -230,6 +273,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="K6I-m8-c14" id="xuM-Wv-L41"/>
+                        <segue destination="aCt-8Y-GPO" kind="presentation" identifier="KeyframeImageDisplayViewController" id="zgh-nV-ZmF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iSj-kn-vlQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

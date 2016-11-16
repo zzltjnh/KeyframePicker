@@ -16,6 +16,8 @@ open class KeyframePickerViewController: UIViewController {
     public var asset: AVAsset?
     ///视频路径（本地或远程）
     public var videoPath: String?
+    ///生成图片完成会执行该闭包
+    public var generatedKeyframeImageHandler: SingleImageClosure?
     public let imageGenerator = KeyframeImageGenerator()
     public var playbackState: KeyframePickerVideoPlayerPlaybackState {
         return videoPlayerController.playbackState
@@ -38,7 +40,7 @@ open class KeyframePickerViewController: UIViewController {
     @IBOutlet weak var bigPlayButton: UIButton!
     
     //MARK: - Private Properties
-    private var _asset: AVAsset? {
+    fileprivate var _asset: AVAsset? {
         if let asset = asset {
             return asset
         }
@@ -147,6 +149,17 @@ open class KeyframePickerViewController: UIViewController {
         onPlay(sender)
     }
     
+    @IBAction func onDone(_ sender: AnyObject) {
+        guard let _asset = _asset else {
+            return
+        }
+        
+        imageGenerator.generateSingleImage(from: _asset, time: currentTime) {
+            [weak self] image in
+            self?.generatedKeyframeImageHandler?(image)
+        }
+    }
+    
     @IBAction func onTapActionContentView(_ sender: AnyObject) {
         //播放器样式反转
         videoPlayerController.style.toggle()
@@ -212,10 +225,10 @@ open class KeyframePickerViewController: UIViewController {
         //记录当前视频时间
         currentTime = time
         
-        guard let asset = asset, videoPlayerController.playbackState == .playing else {
+        guard let _asset = _asset, videoPlayerController.playbackState == .playing else {
             return
         }
-        let percent = time.seconds / asset.duration.seconds
+        let percent = time.seconds / _asset.duration.seconds
         let videoTrackLength = KeyframePickerViewCellWidth * _displayKeyframeImages.count
         let position = CGFloat(videoTrackLength) * CGFloat(percent) - UIScreen.main.bounds.size.width / 2
         collectionView.contentOffset = CGPoint(x: position, y: collectionView.contentOffset.y)
@@ -252,7 +265,7 @@ extension KeyframePickerViewController: UICollectionViewDataSource, UICollection
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //资源为空或播放器未准备好
-        guard  let asset = asset, videoPlayerController.playbackState != .unknown else {
+        guard  let _asset = _asset, videoPlayerController.playbackState != .unknown else {
             return
         }
         //播放中
@@ -268,9 +281,9 @@ extension KeyframePickerViewController: UICollectionViewDataSource, UICollection
         //当前拖动位置占视频的百分比
         let percent = position / CGFloat(videoTrackLength)
         //当前拖动到视频的秒数
-        let currentSecond = asset.duration.seconds * Double(percent)
+        let currentSecond = _asset.duration.seconds * Double(percent)
         //当前拖动到视频的time
-        let currentTime = CMTimeMakeWithSeconds(currentSecond, asset.duration.timescale)
+        let currentTime = CMTimeMakeWithSeconds(currentSecond, _asset.duration.timescale)
         //设置游标时间值
         cursorContainerViewController.seconds = currentSecond
         //将播放器切换到当前帧
