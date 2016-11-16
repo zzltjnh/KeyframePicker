@@ -197,6 +197,7 @@
                         <outlet property="bottomContainerView" destination="0Jn-yY-8gh" id="Xb6-0b-nh4"/>
                         <outlet property="collectionView" destination="DfW-x1-MVE" id="hoX-ph-uxv"/>
                         <outlet property="cursorContainerView" destination="Ek1-hH-iE2" id="sy4-rb-X9v"/>
+                        <outlet property="cursorContainerViewCenterConstraint" destination="VwJ-Ne-cu6" id="2hC-FA-sPG"/>
                         <outlet property="pauseButton" destination="8qm-7M-dV5" id="N12-ab-p0i"/>
                         <outlet property="playButton" destination="d8f-Gl-DIv" id="kTr-Xb-dUx"/>
                     </connections>

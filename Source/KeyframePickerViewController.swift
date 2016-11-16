@@ -38,6 +38,7 @@ open class KeyframePickerViewController: UIViewController {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var bigPlayButton: UIButton!
+    @IBOutlet weak var cursorContainerViewCenterConstraint: NSLayoutConstraint!
     
     //MARK: - Private Properties
     fileprivate var _asset: AVAsset? {
@@ -276,6 +277,11 @@ extension KeyframePickerViewController: UICollectionViewDataSource, UICollection
         let videoTrackLength = KeyframePickerViewCellWidth * _displayKeyframeImages.count
         //当前位置
         var position = scrollView.contentOffset.x + UIScreen.main.bounds.size.width / 2
+        if position < 0 {
+            cursorContainerViewCenterConstraint.constant = -position
+        } else if position > CGFloat(videoTrackLength) {
+            cursorContainerViewCenterConstraint.constant = CGFloat(videoTrackLength) - position
+        }
         position = max(position, 0)
         position = min(position, CGFloat(videoTrackLength))
         //当前拖动位置占视频的百分比
