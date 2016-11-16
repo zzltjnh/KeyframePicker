@@ -155,6 +155,13 @@ open class KeyframePickerViewController: UIViewController {
             return
         }
         
+        guard playbackState != .unknown else {
+            return
+        }
+        
+        // pause if playing before generate image
+        videoPlayerController.pause()
+        
         imageGenerator.generateSingleImage(from: _asset, time: currentTime) {
             [weak self] image in
             self?.generatedKeyframeImageHandler?(image)
