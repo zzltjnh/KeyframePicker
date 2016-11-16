@@ -17,15 +17,22 @@ open class KeyframePickerViewController: UIViewController {
     ///视频路径（本地或远程）
     public var videoPath: String?
     public let imageGenerator = KeyframeImageGenerator()
+    public var playbackState: KeyframePickerVideoPlayerPlaybackState {
+        return videoPlayerController.playbackState
+    }
     
     //MARK: - ChildViewControllers
     weak var cursorContainerViewController: KeyframePickerCursorViewController!
     weak var videoPlayerController: KeyframePickerVideoPlayerController!
     
-    //MARK: - Private Properties
+    //MARK: - IBOutlets
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var cursorContainerView: UIView!
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var bigPlayButton: UIButton!
     
+    //MARK: - Private Properties
     private var _asset: AVAsset? {
         if let asset = asset {
             return asset
@@ -92,12 +99,52 @@ open class KeyframePickerViewController: UIViewController {
         } else if segue.identifier == String(describing: KeyframePickerVideoPlayerController.self) {
             self.videoPlayerController = segue.destination as! KeyframePickerVideoPlayerController
             self.videoPlayerController.asset = _asset
-            self.videoPlayerController.didPlayToEndTimeHandler = { [weak self] in
-                //TODO
+            self.videoPlayerController.playbackStateChangedHandler = {
+                [weak self] playbackState in
+                self?.videoPlayerPlaybackStateChanged(to: playbackState)
             }
-            self.videoPlayerController.failedToPlayToEndTimeHandler = { [weak self] in
-                //TODO
-            }
+        }
+    }
+    
+    //MARK: - Button Actions
+    @IBAction func onPlay(_ sender: AnyObject) {
+        if playbackState == .prepared || playbackState == .didPlayToEndTime {
+            videoPlayerController.playFromBeginning()
+        } else {
+            videoPlayerController.playFromCurrentTime()
+        }
+    }
+    
+    @IBAction func onPause(_ sender: AnyObject) {
+        videoPlayerController.pause()
+    }
+    
+    @IBAction func onBigPlay(_ sender: AnyObject) {
+        videoPlayerController.playFromBeginning()
+    }
+    
+    //MARK: - PlaybackState Changed
+    func videoPlayerPlaybackStateChanged(to playbackState: KeyframePickerVideoPlayerPlaybackState) {
+        if playbackState != .prepared {
+            bigPlayButton.isHidden = true
+        }
+        
+        if playbackState == .playing {
+            playButton.isHidden = true
+            pauseButton.isHidden = false
+        } else if playbackState == .paused {
+            playButton.isHidden = false
+            pauseButton.isHidden = true
+        } else if playbackState == .stoped {
+            playButton.isHidden = false
+            pauseButton.isHidden = true
+        } else if playbackState == .failed {
+            playButton.isHidden = false
+            pauseButton.isHidden = true
+            bigPlayButton.isHidden = false
+        } else if playbackState == .didPlayToEndTime {
+            playButton.isHidden = false
+            pauseButton.isHidden = true
         }
     }
 }

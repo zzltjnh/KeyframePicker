@@ -15,6 +15,7 @@
 		51888D4B1DD9C8A100AF1744 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 517AD48E1DD487FE0034A89D /* Info.plist */; };
 		51888D4D1DDAACF900AF1744 /* KeyframePickerCursorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51888D4C1DDAACF900AF1744 /* KeyframePickerCursorViewController.swift */; };
 		51888D501DDAEBAA00AF1744 /* KeyframePickerVideoPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51888D4F1DDAEBAA00AF1744 /* KeyframePickerVideoPlayerController.swift */; };
+		51DF0C9F1DDC0CD1001462F8 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51DF0C9E1DDC0CD1001462F8 /* images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		51888D491DD9BDDF00AF1744 /* KeyframePickerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyframePickerCollectionViewCell.swift; sourceTree = "<group>"; };
 		51888D4C1DDAACF900AF1744 /* KeyframePickerCursorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyframePickerCursorViewController.swift; sourceTree = "<group>"; };
 		51888D4F1DDAEBAA00AF1744 /* KeyframePickerVideoPlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyframePickerVideoPlayerController.swift; sourceTree = "<group>"; };
+		51DF0C9E1DDC0CD1001462F8 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +45,7 @@
 		517AD45A1DD4855F0034A89D = {
 			isa = PBXGroup;
 			children = (
+				51DF0C9D1DDC0CB5001462F8 /* Resources */,
 				517AD48D1DD487FE0034A89D /* Source */,
 				517AD4651DD4855F0034A89D /* Products */,
 			);
@@ -69,6 +72,14 @@
 				51888D471DD9BC4D00AF1744 /* KeyframePicker.storyboard */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		51DF0C9D1DDC0CB5001462F8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				51DF0C9E1DDC0CD1001462F8 /* images.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,6 +153,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51DF0C9F1DDC0CD1001462F8 /* images.xcassets in Resources */,
 				51888D4B1DD9C8A100AF1744 /* Info.plist in Resources */,
 				51888D481DD9BC4D00AF1744 /* KeyframePicker.storyboard in Resources */,
 			);

@@ -9,15 +9,45 @@
 import UIKit
 import AVFoundation
 
+/// 播放器状态
+///
+/// - unknown:          未知（默认值）
+/// - prepared:         已准备好
+/// - playing:          播放中
+/// - paused:           已暂停
+/// - stoped:           停止
+/// - failed:           失败
+/// - didPlayToEndTime: 播放到结尾
+public enum KeyframePickerVideoPlayerPlaybackState {
+    case unknown
+    case prepared
+    case playing
+    case paused
+    case stoped
+    case failed
+    case didPlayToEndTime
+}
+
+public enum KeyframePickerVideoPlayerStyle {
+    /// 导航条显示
+    case interfaceShow
+    /// 导航条隐藏
+    case interfaceHidden
+}
+
 public typealias KeyframePickerVideoPlayerProgressHandler = (CMTime) -> Void
-public typealias KeyframePickerVideoPlayerStatusHandler = () -> Void
+public typealias KeyframePickerVideoPlayerPlayerPlaybackStateChangedHandler = (KeyframePickerVideoPlayerPlaybackState) -> Void
 
 open class KeyframePickerVideoPlayerController: UIViewController {
     //MARK: - Public Properties
     public var asset: AVAsset?
     public var progressHandler: KeyframePickerVideoPlayerProgressHandler?
-    public var didPlayToEndTimeHandler: KeyframePickerVideoPlayerStatusHandler?
-    public var failedToPlayToEndTimeHandler: KeyframePickerVideoPlayerStatusHandler?
+    public var playbackStateChangedHandler: KeyframePickerVideoPlayerPlayerPlaybackStateChangedHandler?
+    public var style: KeyframePickerVideoPlayerStyle = .interfaceShow {
+        didSet {
+            _videoView.style = style
+        }
+    }
     
     //MARK: - Private Properties
     private lazy var _videoView: KeyframePickerVideoPlayerView = {
@@ -38,9 +68,17 @@ open class KeyframePickerVideoPlayerController: UIViewController {
         return nil
     }()
     
+    /// 播放进度观察者
     private var _timeObserver: Any?
     private var _timeScale: CMTimeScale {
         return asset?.duration.timescale ?? 600
+    }
+    
+    /// 播放状态
+    public private(set) var playbackState: KeyframePickerVideoPlayerPlaybackState = .unknown {
+        didSet {
+            playbackStateChangedHandler?(playbackState)
+        }
     }
     
     //MARK: - Life Cycle
@@ -64,6 +102,12 @@ open class KeyframePickerVideoPlayerController: UIViewController {
         configTimeObserver()
         configNotifications()
     }
+    
+    open override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        playbackState = .prepared
+    }
 
     override open func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -80,11 +124,31 @@ open class KeyframePickerVideoPlayerController: UIViewController {
     
     /// 从当前进度开始播放
     public func playFromCurrentTime() {
+        guard playbackState != .unknown else {
+            return
+        }
+        playbackState = .playing
         _player.play()
     }
     
+    
+    /// 如果播放器正在播放，将其暂停
     public func pause() {
+        guard playbackState == .playing else {
+            return
+        }
         _player.pause()
+        playbackState = .paused
+    }
+    
+    /// 停止播放并将视频画面切回第一帧
+    public func stop() {
+        guard playbackState != .stoped else {
+            return
+        }
+        _player.pause()
+        seek(to: kCMTimeZero)
+        playbackState = .stoped
     }
     
     /// 将视频画面定格到某一帧
@@ -116,11 +180,11 @@ open class KeyframePickerVideoPlayerController: UIViewController {
     
     //MARK: - Notification Methods
     @objc private func didPlayToEndTime() {
-        didPlayToEndTimeHandler?()
+        playbackState = .didPlayToEndTime
     }
     
     @objc private func failedToPlayToEndTime() {
-        failedToPlayToEndTimeHandler?()
+        playbackState = .failed
     }
 }
 
@@ -167,6 +231,20 @@ open class KeyframePickerVideoPlayerView: UIView {
     public var playerLayerBackgroundColor = UIColor.white.cgColor {
         didSet {
             self.playerLayer.backgroundColor = UIColor.white.cgColor
+        }
+    }
+    
+    public var style: KeyframePickerVideoPlayerStyle = .interfaceShow {
+        didSet {
+            var color = UIColor.white.cgColor
+            switch style {
+            case .interfaceShow: color = UIColor.white.cgColor
+            case .interfaceHidden: color = UIColor.blue.cgColor
+            }
+            
+            UIView.animate(withDuration: 0.3) { 
+                self.playerLayerBackgroundColor = color
+            }
         }
     }
     

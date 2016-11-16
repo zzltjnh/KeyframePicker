@@ -23,6 +23,23 @@
                                     <segue destination="9SR-AG-cMO" kind="embed" identifier="KeyframePickerVideoPlayerController" id="e3f-CD-YFL"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Azn-xI-7p7" userLabel="Play Button">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="1vt-gI-Gf1"/>
+                                    <constraint firstAttribute="height" constant="70" id="mzR-6D-hwT"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="7" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" image="play_big"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="35"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onBigPlay:" destination="eaV-a8-Sv7" eventType="touchUpInside" id="57k-Tv-W56"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Jn-yY-8gh" userLabel="Bottom Container View">
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lIA-Wj-vWT" userLabel="Background View">
@@ -53,7 +70,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="KeyframePickerCollectionViewCell" id="dkS-cx-Azc" customClass="KeyframePickerCollectionViewCell" customModule="KeyframePicker" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="95" height="42"/>
+                                                <rect key="frame" x="0.0" y="-1" width="95" height="42"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="95" height="42"/>
@@ -92,6 +109,24 @@
                                             <segue destination="jBO-pp-AOb" kind="embed" identifier="KeyframePickerCursorViewController" id="G4R-oY-EVz"/>
                                         </connections>
                                     </containerView>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8qm-7M-dV5" userLabel="Pause Button">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="bLp-PT-b15"/>
+                                        </constraints>
+                                        <state key="normal" image="pause"/>
+                                        <connections>
+                                            <action selector="onPause:" destination="eaV-a8-Sv7" eventType="touchUpInside" id="fan-jc-SGK"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d8f-Gl-DIv" userLabel="Play Button">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="BTS-zR-Kk1"/>
+                                        </constraints>
+                                        <state key="normal" image="play"/>
+                                        <connections>
+                                            <action selector="onPlay:" destination="eaV-a8-Sv7" eventType="touchUpInside" id="NOy-Ls-9tP"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -101,14 +136,21 @@
                                     <constraint firstAttribute="bottom" secondItem="lIA-Wj-vWT" secondAttribute="bottom" id="BDc-vv-ypo"/>
                                     <constraint firstAttribute="trailing" secondItem="DfW-x1-MVE" secondAttribute="trailing" id="CEo-pj-dJc"/>
                                     <constraint firstAttribute="bottom" secondItem="DfW-x1-MVE" secondAttribute="bottom" constant="45" id="E1D-16-6q5"/>
+                                    <constraint firstItem="8qm-7M-dV5" firstAttribute="top" secondItem="Ek1-hH-iE2" secondAttribute="bottom" id="GWJ-rR-QaZ"/>
                                     <constraint firstAttribute="trailing" secondItem="lIA-Wj-vWT" secondAttribute="trailing" id="GoL-go-KXU"/>
+                                    <constraint firstItem="8qm-7M-dV5" firstAttribute="top" secondItem="d8f-Gl-DIv" secondAttribute="top" id="HRd-oS-tqT"/>
+                                    <constraint firstItem="8qm-7M-dV5" firstAttribute="bottom" secondItem="d8f-Gl-DIv" secondAttribute="bottom" id="OBp-vk-fGw"/>
                                     <constraint firstItem="Ek1-hH-iE2" firstAttribute="top" secondItem="0Jn-yY-8gh" secondAttribute="top" id="OTF-pU-KAv"/>
                                     <constraint firstItem="Ek1-hH-iE2" firstAttribute="centerX" secondItem="0Jn-yY-8gh" secondAttribute="centerX" id="VwJ-Ne-cu6"/>
                                     <constraint firstAttribute="height" constant="108" id="W2D-yq-xXQ"/>
+                                    <constraint firstItem="8qm-7M-dV5" firstAttribute="trailing" secondItem="d8f-Gl-DIv" secondAttribute="trailing" id="W8d-jh-gVH"/>
+                                    <constraint firstItem="8qm-7M-dV5" firstAttribute="centerX" secondItem="0Jn-yY-8gh" secondAttribute="centerX" id="ZNV-g2-bgW"/>
                                     <constraint firstItem="DfW-x1-MVE" firstAttribute="top" secondItem="oFY-0F-W0j" secondAttribute="bottom" constant="1" id="eLx-CH-HpY"/>
                                     <constraint firstItem="lIA-Wj-vWT" firstAttribute="top" secondItem="0Jn-yY-8gh" secondAttribute="top" constant="20" id="iYO-2o-BA3"/>
                                     <constraint firstItem="lIA-Wj-vWT" firstAttribute="top" secondItem="oFY-0F-W0j" secondAttribute="bottom" constant="-0.5" id="jGt-yg-zn4"/>
                                     <constraint firstItem="DfW-x1-MVE" firstAttribute="leading" secondItem="0Jn-yY-8gh" secondAttribute="leading" id="mWs-90-ofB"/>
+                                    <constraint firstItem="8qm-7M-dV5" firstAttribute="leading" secondItem="d8f-Gl-DIv" secondAttribute="leading" id="ox9-sH-KLX"/>
+                                    <constraint firstAttribute="bottom" secondItem="8qm-7M-dV5" secondAttribute="bottom" id="qcI-Hj-id2"/>
                                     <constraint firstAttribute="bottom" secondItem="Ek1-hH-iE2" secondAttribute="bottom" constant="45" id="v13-TQ-mC7"/>
                                 </constraints>
                             </view>
@@ -120,13 +162,18 @@
                             <constraint firstAttribute="bottom" secondItem="0Jn-yY-8gh" secondAttribute="bottom" id="TB5-tK-0OW"/>
                             <constraint firstItem="0Jn-yY-8gh" firstAttribute="leading" secondItem="Nen-VJ-hC7" secondAttribute="leading" id="hEf-Je-XI5"/>
                             <constraint firstItem="JA0-JU-fk9" firstAttribute="leading" secondItem="Nen-VJ-hC7" secondAttribute="leading" id="ijS-Nh-et9"/>
+                            <constraint firstItem="Azn-xI-7p7" firstAttribute="centerX" secondItem="Nen-VJ-hC7" secondAttribute="centerX" id="tOJ-qL-mhb"/>
                             <constraint firstAttribute="trailing" secondItem="0Jn-yY-8gh" secondAttribute="trailing" id="vgy-E4-P8G"/>
+                            <constraint firstItem="Azn-xI-7p7" firstAttribute="centerY" secondItem="Nen-VJ-hC7" secondAttribute="centerY" id="wcT-2E-Xco"/>
                             <constraint firstItem="JA0-JU-fk9" firstAttribute="top" secondItem="Nen-VJ-hC7" secondAttribute="top" id="xUj-tU-hln"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bigPlayButton" destination="Azn-xI-7p7" id="9Zo-5Q-Lzy"/>
                         <outlet property="collectionView" destination="DfW-x1-MVE" id="hoX-ph-uxv"/>
                         <outlet property="cursorContainerView" destination="Ek1-hH-iE2" id="sy4-rb-X9v"/>
+                        <outlet property="pauseButton" destination="8qm-7M-dV5" id="N12-ab-p0i"/>
+                        <outlet property="playButton" destination="d8f-Gl-DIv" id="kTr-Xb-dUx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWU-kM-9mf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -218,4 +265,9 @@
             <point key="canvasLocation" x="1089" y="-10"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pause" width="20" height="20"/>
+        <image name="play" width="20" height="20"/>
+        <image name="play_big" width="37" height="37"/>
+    </resources>
 </document>
