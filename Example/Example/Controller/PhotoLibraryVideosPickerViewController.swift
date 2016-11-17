@@ -55,7 +55,14 @@ class PhotoLibraryVideosPickerViewController: UIViewController {
     }
 }
 
-extension PhotoLibraryVideosPickerViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension PhotoLibraryVideosPickerViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemWidth = (UIScreen.main.bounds.size.width - 5 * 5) / 4
+        
+        return CGSize(width: itemWidth, height: itemWidth)
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }

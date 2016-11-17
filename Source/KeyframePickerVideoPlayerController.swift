@@ -110,7 +110,7 @@ open class KeyframePickerVideoPlayerController: UIViewController {
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        playbackState = .prepared
+        if playbackState == .unknown { playbackState = .prepared }
     }
 
     override open func didReceiveMemoryWarning() {
