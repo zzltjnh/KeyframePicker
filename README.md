@@ -1,12 +1,18 @@
 # KeyframePicker
 
-Keyframe image picker like iPhone photo library written in Swift
+Keyframe image generateor and picker from a video like iPhone photo library written in Swift.
 
 ## Example
 
 ![](/Screenshots/screenshot.gif)
 
 To run the example project, clone the repo, open `KeyframePicker.xcworkspace` from root directory.
+
+- [Requirements](#Requirements)
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [Author](#Author)
+- [License](#License)
 
 ## Requirements
 
