@@ -4,6 +4,8 @@ Keyframe image picker like iPhone photo library written in Swift
 
 ## Example
 
+![](/Screenshots/screenshot.gif)
+
 To run the example project, clone the repo, open `KeyframePicker.xcworkspace` from root directory.
 
 ## Requirements
