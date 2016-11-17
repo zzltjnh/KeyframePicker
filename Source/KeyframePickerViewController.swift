@@ -294,7 +294,9 @@ extension KeyframePickerViewController: UICollectionViewDataSource, UICollection
         //percent of current position in progress bar
         let percent = position / CGFloat(videoTrackLength)
         //
-        let currentSecond = _asset.duration.seconds * Double(percent)
+        var currentSecond = _asset.duration.seconds * Double(percent)
+        currentSecond = max(currentSecond, 0)
+        currentSecond = min(currentSecond, _asset.duration.seconds)
         //
         let currentTime = CMTimeMakeWithSeconds(currentSecond, _asset.duration.timescale)
         //update cursor time value

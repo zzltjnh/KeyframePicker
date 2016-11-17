@@ -47,7 +47,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FQY-Pu-f2h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-326" y="-931"/>
+            <point key="canvasLocation" x="1750" y="-352"/>
         </scene>
         <!--Example-->
         <scene sceneID="tne-QT-ifu">
@@ -73,9 +73,9 @@
                                     <segue destination="CFA-Rf-j00" kind="show" id="af7-dU-yp7"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mgf-vH-cgi">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mgf-vH-cgi">
                                 <color key="backgroundColor" red="1" green="1" blue="0.33694727891156462" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="TODO: Local Video">
+                                <state key="normal" title="Local Video">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -163,11 +163,12 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="SJC-T3-F0r" id="H9o-m3-ufp"/>
+                        <segue destination="aCt-8Y-GPO" kind="presentation" identifier="KeyframeImageDisplayViewController" id="f2W-Ne-XJq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rVn-tY-fp0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="589.60000000000002" y="135.38230884557723"/>
+            <point key="canvasLocation" x="604" y="117"/>
         </scene>
         <!--Remote Videos Picker View Controller-->
         <scene sceneID="0YH-rG-rgy">
@@ -213,7 +214,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q2M-kD-ny0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="589.60000000000002" y="926.98650674662679"/>
+            <point key="canvasLocation" x="604" y="867"/>
         </scene>
         <!--Photo Library Videos Picker View Controller-->
         <scene sceneID="5lr-6b-hRb">
@@ -299,4 +300,7 @@
             <point key="canvasLocation" x="-1430" y="137"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="f2W-Ne-XJq"/>
+    </inferredMetricsTieBreakers>
 </document>

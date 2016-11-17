@@ -22,6 +22,7 @@
 		51888D1B1DD7500E00AF1744 /* KeyframePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517AD4A51DD5AC130034A89D /* KeyframePicker.framework */; };
 		51888D1C1DD7500E00AF1744 /* KeyframePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 517AD4A51DD5AC130034A89D /* KeyframePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		51DF0CA11DDC7765001462F8 /* KeyframeImageDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DF0CA01DDC7765001462F8 /* KeyframeImageDisplayViewController.swift */; };
+		51DF0CAE1DDD8B4C001462F8 /* Videos in Resources */ = {isa = PBXBuildFile; fileRef = 51DF0CAD1DDD8B4C001462F8 /* Videos */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		517AD4C21DD5C4320034A89D /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		51888D131DD5CE6800AF1744 /* PhotoLibraryPickerViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryPickerViewCell.swift; sourceTree = "<group>"; };
 		51DF0CA01DDC7765001462F8 /* KeyframeImageDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyframeImageDisplayViewController.swift; sourceTree = "<group>"; };
+		51DF0CAD1DDD8B4C001462F8 /* Videos */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Videos; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 		517AD4B81DD5C3C10034A89D /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				51DF0CAD1DDD8B4C001462F8 /* Videos */,
 				517AD4BE1DD5C3F90034A89D /* Assets.xcassets */,
 				517AD4BF1DD5C3F90034A89D /* Info.plist */,
 			);
@@ -239,6 +242,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51DF0CAE1DDD8B4C001462F8 /* Videos in Resources */,
 				517AD4C11DD5C3F90034A89D /* Info.plist in Resources */,
 				517AD4861DD4857E0034A89D /* LaunchScreen.storyboard in Resources */,
 				517AD4C01DD5C3F90034A89D /* Assets.xcassets in Resources */,

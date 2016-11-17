@@ -12,4 +12,5 @@ import Photos
 struct VideoModel {
     var asset: PHAsset?
     var videoPath: String?
+    var videoName: String?
 }
