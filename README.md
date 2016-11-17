@@ -8,11 +8,11 @@ Keyframe image generateor and picker from a video like iPhone photo library writ
 
 To run the example project, clone the repo, open `KeyframePicker.xcworkspace` from root directory.
 
-- [Requirements](#Requirements)
-- [Installation](#Installation)
-- [Usage](#Usage)
-- [Author](#Author)
-- [License](#License)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Author](#author)
+- [License](#license)
 
 ## Requirements
 
