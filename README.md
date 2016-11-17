@@ -31,7 +31,8 @@ import KeyframePicker
 let storyBoard = UIStoryboard(name: "KeyframePicker", bundle: Bundle(for: KeyframePickerViewController.self))
 // init
 let keyframePicker = storyBoard.instantiateViewController(withIdentifier: String(describing: KeyframePickerViewController.self)) as! KeyframePickerViewController
-// set video source
+// set `asset` if your video from photolibrary or camera
+// set `videoPath` if your video from sand box or remote
 keyframePicker.asset = yourAvAsset
 // set handler
 keyframePicker.generatedKeyframeImageHandler = { [weak self] image in
