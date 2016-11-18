@@ -35,23 +35,25 @@ pod 'KeyframePicker'
 import KeyframePicker
 ```
 ```siwft
-// get storyboard
-let storyBoard = UIStoryboard(name: "KeyframePicker", bundle: Bundle(for: KeyframePickerViewController.self))
-// init
-let keyframePicker = storyBoard.instantiateViewController(withIdentifier: String(describing: KeyframePickerViewController.self)) as! KeyframePickerViewController
+//create
+let keyframePicker = KeyframePickerViewController.create()
+
 // set `asset` if your video from photolibrary or camera
 // set `videoPath` if your video from sand box or remote
 keyframePicker.asset = yourAvAsset
+
 // set handler
 keyframePicker.generatedKeyframeImageHandler = { [weak self] image in
     if let image = image {
         print("generate image success")
+        //do something with image
     } else {
         print("generate image failed")
     }
 }
+
 // show
-self?.navigationController?.pushViewController(keyframePicker, animated: true)
+navigationController?.pushViewController(keyframePicker, animated: true)
  ``` 
 ## Author
 
