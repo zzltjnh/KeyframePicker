@@ -72,6 +72,12 @@ open class KeyframePickerViewController: UIViewController {
     override open var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
         return .fade
     }
+    
+    //MARK: - Class Method
+    open class func create() -> KeyframePickerViewController {
+        let storyBoard = UIStoryboard(name: "KeyframePicker", bundle: Bundle(for: KeyframePickerViewController.self))
+        return storyBoard.instantiateViewController(withIdentifier: String(describing: KeyframePickerViewController.self)) as! KeyframePickerViewController
+    }
 
     //MARK: - Life Cycle
     open override func viewDidLoad() {

@@ -86,9 +86,7 @@ extension LocalVideosPickerViewController: UITableViewDataSource, UITableViewDel
         let videoModel = videos[indexPath.row]
         guard let videoPath = videoModel.videoPath else { return }
         
-        let storyBoard = UIStoryboard(name: "KeyframePicker", bundle: Bundle(for: KeyframePickerViewController.self))
-        let keyframePicker = storyBoard.instantiateViewController(withIdentifier: String(describing: KeyframePickerViewController.self)) as! KeyframePickerViewController
-        
+        let keyframePicker = KeyframePickerViewController.create()
         keyframePicker.videoPath = videoPath
         // set handler
         keyframePicker.generatedKeyframeImageHandler = { [weak self] image in
