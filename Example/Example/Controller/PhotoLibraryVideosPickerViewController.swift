@@ -92,9 +92,7 @@ extension PhotoLibraryVideosPickerViewController: UICollectionViewDataSource, UI
         PHImageManager.default().requestAVAsset(forVideo: asset, options: nil) { [weak self] (avAsset, _, _) in
             //perform on mainQueue
             DispatchQueue.main.async {
-                let storyBoard = UIStoryboard(name: "KeyframePicker", bundle: Bundle(for: KeyframePickerViewController.self))
-                let keyframePicker = storyBoard.instantiateViewController(withIdentifier: String(describing: KeyframePickerViewController.self)) as! KeyframePickerViewController
-                
+                let keyframePicker = KeyframePickerViewController.create()
                 keyframePicker.asset = avAsset
                 // set handler
                 keyframePicker.generatedKeyframeImageHandler = { [weak self] image in
